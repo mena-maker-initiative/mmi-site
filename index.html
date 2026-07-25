@@ -38,10 +38,10 @@
     mask-image: linear-gradient(180deg, black, black 30%, transparent 85%);
   }
   .wrap{max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
- 
+
   h1,h2,h3,.display{font-family:'IBM Plex Sans', sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
   .mono{font-family:'IBM Plex Mono', monospace;}
- 
+
   .title-block{
     display:inline-flex; align-items:stretch; border:1px solid var(--blue);
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em;
@@ -50,7 +50,7 @@
   .title-block span{padding:6px 12px; border-right:1px solid var(--line);}
   .title-block span:last-child{border-right:none;}
   .title-block .num{color:var(--amber);}
- 
+
   nav{
     position:sticky; top:0; z-index:10;
     background:rgba(255,255,255,0.92); backdrop-filter:blur(8px);
@@ -68,7 +68,7 @@
   }
   .navlinks a:hover{color:var(--blue-bright); background:var(--tint);}
   @media(max-width:860px){ .navlinks{display:none;} }
- 
+
   .hero{padding:90px 0 70px; position:relative;}
   .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
   .hero h1{font-size:clamp(36px,5.5vw,58px); line-height:1.08; max-width:800px; margin-bottom:22px;}
@@ -84,20 +84,20 @@
   .btn-primary:hover{background:var(--blue); border-color:var(--blue);}
   .btn-ghost{border-color:var(--blue); color:var(--blue);}
   .btn-ghost:hover{background:var(--blue); color:#fff;}
- 
+
   .schematic{position:absolute; right:-30px; top:70px; width:360px; opacity:0.9; z-index:0;}
   @media(max-width:900px){ .schematic{display:none;} }
- 
+
   .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:26px 0; background:var(--paper);}
   .stats .wrap{display:flex; flex-wrap:wrap; gap:40px;}
   .stat .num{font-family:'IBM Plex Sans'; font-size:26px; color:var(--blue-bright); font-weight:700;}
   .stat .label{font-family:'IBM Plex Mono'; font-size:11px; color:var(--slate); text-transform:uppercase; letter-spacing:0.05em; margin-top:4px;}
- 
+
   section{padding:80px 0;}
   section h2{font-size:clamp(26px,3.6vw,36px); margin-bottom:14px;}
   section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:640px; margin-bottom:44px;}
   .section-alt{background:var(--paper);}
- 
+
   /* About / roadmap */
   .about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:50px; align-items:start;}
   @media(max-width:820px){ .about-grid{grid-template-columns:1fr;} }
@@ -110,7 +110,7 @@
   .rm-item .rm-label{font-family:'IBM Plex Mono'; font-size:11px; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:3px;}
   .rm-item p{margin:0; font-size:14px; color:var(--ink-soft);}
   .rm-item h4{font-size:15px; margin-bottom:2px;}
- 
+
   /* Start Here */
   .learn-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px;}
   @media(max-width:780px){ .learn-grid{grid-template-columns:1fr;} }
@@ -120,7 +120,7 @@
   .learn-card h3{font-size:16px;}
   .learn-card p{color:var(--ink-soft); font-size:14px;}
   .learn-note{margin-top:28px; border-left:3px solid var(--amber); background:#FBF3E8; padding:14px 18px; font-size:14px; color:#5A3E17;}
- 
+
   /* Cards */
   .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
   @media(max-width:820px){ .grid3{grid-template-columns:1fr;} }
@@ -136,9 +136,10 @@
   .status.live{color:#1E8E5A;}
   .status.pending{color:var(--slate);}
   .lang-row{display:flex; gap:6px; margin-top:14px;}
-  .lang-pill{font-family:'IBM Plex Mono'; font-size:10px; border:1px solid var(--line); color:var(--ink-soft); padding:3px 8px; border-radius:20px;}
+  .lang-pill{font-family:'IBM Plex Mono'; font-size:10px; border:1px solid var(--line); color:var(--ink-soft); padding:3px 8px; border-radius:20px; text-decoration:none; transition:all .15s;}
   .lang-pill.on{border-color:var(--blue); color:var(--blue); background:var(--tint);}
- 
+  .lang-pill.on:hover{background:var(--blue); color:#fff;}
+
   /* Playbook list */
   .playbook-list{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
   .pl-row{display:flex; justify-content:space-between; align-items:center; padding:20px 24px; border-bottom:1px solid var(--line); gap:20px; flex-wrap:wrap; background:var(--white);}
@@ -146,7 +147,7 @@
   .pl-row .name{font-family:'IBM Plex Sans'; font-weight:600; font-size:16px;}
   .pl-row .desc{color:var(--ink-soft); font-size:13px; margin-top:4px;}
   .pl-row .badge{font-family:'IBM Plex Mono'; font-size:11px; color:var(--blue); background:var(--tint); padding:5px 10px; letter-spacing:0.05em; text-transform:uppercase; flex-shrink:0; border-radius:20px;}
- 
+
   /* Horizon */
   .horizon{background:var(--paper); border:1px solid var(--line); padding:50px; position:relative; border-radius:6px;}
   @media(max-width:720px){ .horizon{padding:32px 22px;} }
@@ -156,7 +157,7 @@
   .cbox{border:1px solid var(--blue); background:var(--white); padding:16px 20px; text-align:center; min-width:80px; border-radius:4px;}
   .cbox .n{font-family:'IBM Plex Sans'; font-size:26px; color:var(--blue-bright); font-weight:700;}
   .cbox .l{font-family:'IBM Plex Mono'; font-size:10px; color:var(--slate); text-transform:uppercase; margin-top:4px;}
- 
+
   /* Board */
   .board-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
   @media(max-width:900px){ .board-grid{grid-template-columns:repeat(2,1fr);} }
@@ -165,7 +166,7 @@
   .role-card .rn{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); margin-bottom:10px;}
   .role-card h4{font-family:'IBM Plex Sans'; font-size:15px; margin-bottom:8px;}
   .role-card p{font-size:13px; color:var(--ink-soft);}
- 
+
   footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
   footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
   footer .f-brand{max-width:340px;}
@@ -178,22 +179,23 @@
 </style>
 </head>
 <body>
- 
+
 <div class="bp-bg"></div>
- 
+
 <nav>
   <div class="wrap">
-    <div class="logo"><span class="logo-mark"></span> MMI</div>
+    <a href="index.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
     <div class="navlinks">
       <a href="#start-here">Start Here</a>
       <a href="#vault">Vault</a>
       <a href="#playbook">Playbook</a>
+      <a href="competitions.html">Competitions</a>
       <a href="#horizon">Horizon</a>
       <a href="#about">About</a>
     </div>
   </div>
 </nav>
- 
+
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;001</div>
@@ -215,7 +217,7 @@
     <path d="M0 40 H300 M0 260 H300" stroke="#DCE7F0" stroke-width="1"/>
   </svg>
 </header>
- 
+
 <div class="stats">
   <div class="wrap">
     <div class="stat"><div class="num">EN + AR</div><div class="label">Every Blueprint, Both Languages</div></div>
@@ -223,7 +225,7 @@
     <div class="stat"><div class="num">04</div><div class="label">Board Seats Open</div></div>
   </div>
 </div>
- 
+
 <section id="about">
   <div class="wrap">
     <div class="title-block"><span class="num">00</span><span>About</span><span>Mission &amp; Roadmap</span></div>
@@ -262,7 +264,7 @@
     </div>
   </div>
 </section>
- 
+
 <section id="start-here" class="section-alt">
   <div class="wrap">
     <div class="title-block"><span class="num">01</span><span>Foundations</span><span>Start Here</span></div>
@@ -289,7 +291,7 @@
     <div class="learn-note">These four ideas are enough to start Blueprint BP-001 below. A full step-by-step foundations course — going deeper into each concept — is next on the roadmap.</div>
   </div>
 </section>
- 
+
 <section id="vault">
   <div class="wrap">
     <div class="title-block"><span class="num">02</span><span>Module</span><span>The Blueprint Vault</span></div>
@@ -301,26 +303,26 @@
         <h3>Architecture of Autonomous Sensor Arrays</h3>
         <p>Wire and program an Arduino to read three sensors at once — distance, temperature/humidity, and light.</p>
         <span class="status live">● Available</span>
-        <div class="lang-row"><span class="lang-pill on">EN</span><span class="lang-pill on">AR</span></div>
+        <div class="lang-row"><a href="blueprints/BP-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
       </div>
       <div class="card">
         <span class="tag">BP&#8209;002 · Data Systems</span>
         <h3>Real-Time Environmental Data Logging &amp; Logic Integration</h3>
         <p>Capture, store, and react to live sensor data on low-cost hardware.</p>
-        <span class="status pending">○ In Progress</span>
-        <div class="lang-row"><span class="lang-pill">EN</span><span class="lang-pill">AR</span></div>
+        <span class="status live">● Available</span>
+        <div class="lang-row"><a href="blueprints/BP-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
       </div>
       <div class="card">
         <span class="tag">BP&#8209;003 · Circuit Logic</span>
         <h3>Logic Gate Arrays in Low-Cost Automated Circuits</h3>
         <p>Build decision-making circuits without a microcontroller, from first principles.</p>
-        <span class="status pending">○ In Progress</span>
-        <div class="lang-row"><span class="lang-pill">EN</span><span class="lang-pill">AR</span></div>
+        <span class="status live">● Available</span>
+        <div class="lang-row"><a href="blueprints/BP-003_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-003_AR.pdf" class="lang-pill on">AR ↓</a></div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <section id="playbook" class="section-alt">
   <div class="wrap">
     <div class="title-block"><span class="num">03</span><span>Module</span><span>The ISEF &amp; University Playbook</span></div>
@@ -342,7 +344,7 @@
     </div>
   </div>
 </section>
- 
+
 <section id="horizon">
   <div class="wrap">
     <div class="title-block"><span class="num">04</span><span>Module</span><span>The Horizon Challenge</span></div>
@@ -362,7 +364,7 @@
     </div>
   </div>
 </section>
- 
+
 <section id="board" class="section-alt">
   <div class="wrap">
     <div class="title-block"><span class="num">05</span><span>Team</span><span>Operational Board</span></div>
@@ -392,7 +394,7 @@
     </div>
   </div>
 </section>
- 
+
 <footer>
   <div class="wrap">
     <div class="f-brand">
@@ -405,6 +407,7 @@
         <a href="#start-here">Start Here</a>
         <a href="#vault">Blueprint Vault</a>
         <a href="#playbook">Playbook</a>
+        <a href="competitions.html">Competitions</a>
       </div>
       <div class="f-col">
         <h5>Involved</h5>
@@ -419,6 +422,6 @@
     <span>FOUNDED &amp; DIRECTED BY SALMA</span>
   </div>
 </footer>
- 
+
 </body>
 </html>
