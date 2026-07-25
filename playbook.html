@@ -27,12 +27,12 @@
   .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
   .wrap{max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
   h1,h2,h3,.display{font-family:'IBM Plex Sans', sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
-
+ 
   .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; background:var(--white); }
   .title-block span{padding:6px 12px; border-right:1px solid var(--line);}
   .title-block span:last-child{border-right:none;}
   .title-block .num{color:var(--amber);}
-
+ 
   nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
   .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none;}
@@ -42,17 +42,17 @@
   .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono'; padding:8px 14px; border:1px solid transparent; transition:all .2s; text-transform:uppercase; letter-spacing:0.04em; }
   .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
   @media(max-width:900px){ .navlinks{display:none;} }
-
+ 
   .hero{padding:70px 0 50px; position:relative;}
   .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
   .hero h1{font-size:clamp(32px,5vw,50px); line-height:1.1; max-width:760px; margin-bottom:20px;}
   .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:680px;}
-
+ 
   section{padding:64px 0;}
   section h2{font-size:clamp(24px,3.4vw,32px); margin-bottom:14px;}
   section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:680px; margin-bottom:36px;}
   .section-alt{background:var(--paper);}
-
+ 
   /* Confidence-tagged country cards */
   .country-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
   @media(max-width:820px){ .country-grid{grid-template-columns:1fr;} }
@@ -65,9 +65,9 @@
   .conf-tag.check{background:#FBF3E8; color:var(--amber);}
   .conf-tag.none{background:#F4F7F8; color:var(--slate);}
   .country-card p{font-size:13.5px; color:var(--ink-soft); margin:0;}
-
+ 
   .verify-note{ margin-top:24px; border-left:3px solid var(--blue); background:var(--tint); padding:14px 18px; font-size:13.5px; color:var(--ink-soft); }
-
+ 
   /* Requirement chips */
   .req-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin: 6px 0 30px;}
   @media(max-width:820px){ .req-grid{grid-template-columns:1fr 1fr;} }
@@ -76,7 +76,7 @@
   .req-chip .rn{font-family:'IBM Plex Mono'; font-size:20px; color:var(--blue-bright); font-weight:700;}
   .req-chip .rl{font-family:'IBM Plex Mono'; font-size:10px; color:var(--slate); text-transform:uppercase; letter-spacing:0.05em; margin-top:2px;}
   .req-chip p{font-size:12.5px; color:var(--ink-soft); margin-top:8px;}
-
+ 
   /* Process steps */
   .flow{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden; margin-bottom:10px;}
   .flow-step{display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); background:var(--white);}
@@ -85,7 +85,7 @@
   .flow-step h4{font-size:15px; margin-bottom:5px;}
   .flow-step p{font-size:13.5px; color:var(--ink-soft); margin:0;}
   .flow-example{font-family:'IBM Plex Mono'; font-size:11.5px; color:var(--blue); background:var(--tint); padding:6px 10px; margin-top:8px; display:inline-block; border-radius:3px;}
-
+ 
   /* Timeline */
   .term-grid{display:flex; flex-direction:column; gap:0; border-left:2px solid var(--line); margin-left:8px;}
   .term{position:relative; padding:0 0 34px 26px;}
@@ -95,10 +95,10 @@
   .term h4{font-size:16px; margin-bottom:8px;}
   .term ul{margin:0 0 0 18px; padding:0;}
   .term li{font-size:13.5px; color:var(--ink-soft); margin-bottom:5px;}
-
+ 
   .callout{ border-left:3px solid var(--amber); background:#FBF3E8; padding:18px 22px; margin: 20px 0; }
   .callout p{ color:#5A3E17; font-size:14.5px; }
-
+ 
   footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
   footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
   footer .f-brand{max-width:340px;}
@@ -107,9 +107,9 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="bp-bg"></div>
-
+ 
 <nav>
   <div class="wrap">
     <a href="index.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
@@ -119,11 +119,12 @@
       <a href="playbook.html" class="active">Playbook</a>
       <a href="competitions.html">Competitions</a>
       <a href="index.html#horizon">Horizon</a>
+      <a href="board.html">Board</a>
       <a href="index.html#about">About</a>
     </div>
   </div>
 </nav>
-
+ 
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;003</div>
@@ -131,13 +132,13 @@
     <p class="lede">The structural mechanics of getting from a finished blueprint to a real submission — which fairs actually feed into ISEF, how to turn a build into a research abstract, and how to fit all of it around your actual school year.</p>
   </div>
 </header>
-
+ 
 <section id="pipeline">
   <div class="wrap">
     <div class="title-block"><span class="num">01</span><span>Resource</span><span>Regional Pipeline Index</span></div>
     <h2>Where the ISEF pathway actually exists in your country</h2>
     <p class="intro">Researched directly, not assumed. Each entry below is tagged by how confident we are — confirmed pathways we found current evidence for, ones that need a direct check because our sources were dated, and real gaps where we found nothing. Society for Science's own <strong>Find-a-Fair</strong> directory is always the final word.</p>
-
+ 
     <div class="country-grid">
       <div class="country-card">
         <h4>Egypt <span class="conf-tag confirmed">Confirmed</span></h4>
@@ -164,25 +165,25 @@
         <p>We did not find current, reliable evidence of active pathways for these countries in this pass. That doesn't mean nothing exists — it means check Find-a-Fair directly rather than trust an absence on this list.</p>
       </div>
     </div>
-
+ 
     <div class="verify-note">This index will grow as MMI's Academic &amp; Strategy Coordinator role gets filled — see the <a href="index.html#board" style="color:var(--blue);">Board</a> section. For now, treat every entry here as a lead to verify, not a final answer, and always cross-check against Society for Science's official directory before building a timeline around it.</div>
   </div>
 </section>
-
+ 
 <section class="section-alt" id="abstract">
   <div class="wrap">
     <div class="title-block"><span class="num">02</span><span>Guide</span><span>The Project Blueprint</span></div>
     <h2>Turning a hardware build into an ISEF-compliant submission</h2>
     <p class="intro">A finished blueprint from the Vault is a working build, not yet a research project. Here's exactly what ISEF requires, sourced from the official rules — and the actual steps to get from "I built a sensor array" to a submission that meets every one of them.</p>
-
+ 
     <div class="req-grid">
       <div class="req-chip"><div class="rn">250</div><div class="rl">Word Abstract Limit</div><p>One page, on the official ISEF abstract form, describing only the student's own work.</p></div>
       <div class="req-chip"><div class="rn">240×122×76</div><div class="rl">Max Board Size (cm)</div><p>Height × width × depth — confirm against your specific affiliated fair, as some vary slightly from the ISEF standard.</p></div>
       <div class="req-chip"><div class="rn">12</div><div class="rl">Months Max Research</div><p>Continuous research window — can't combine work from multiple unrelated years into one submission.</p></div>
     </div>
-
+ 
     <div class="callout"><p><strong>Also required:</strong> Checklist Form 1, Student Checklist Form 1A, and the Research Plan &amp; Approval Form 1B for every project — plus Form 1C if any work happened somewhere other than home, school, or field. Every graphic on your board (photos, charts, clip art) needs individual citation — a blanket "all graphics by student" statement is no longer accepted. All materials must be in English.</p></div>
-
+ 
     <h3 style="font-size:17px; margin-bottom:16px;">From finished build to research submission</h3>
     <div class="flow">
       <div class="flow-step">
@@ -209,13 +210,13 @@
     </div>
   </div>
 </section>
-
+ 
 <section id="timeline">
   <div class="wrap">
     <div class="title-block"><span class="num">03</span><span>Guide</span><span>Standardized Integration Timeline</span></div>
     <h2>Fitting research around exams, not instead of them</h2>
     <p class="intro">A template to adapt, not a fixed calendar — every school's exam schedule differs. The point is the shape: start early, log data continuously in the background, and never let a research deadline collide with your actual exams.</p>
-
+ 
     <div class="term-grid">
       <div class="term">
         <div class="tlabel">Term 1</div>
@@ -245,11 +246,11 @@
         </ul>
       </div>
     </div>
-
+ 
     <div class="callout"><p><strong>The one rule that matters most:</strong> if a research deadline and an exam ever genuinely conflict, the exam wins. A missed fair registration is recoverable next cycle. A damaged transcript is not. Build the research around your academic calendar — never the other way around.</p></div>
   </div>
 </section>
-
+ 
 <footer>
   <div class="wrap">
     <div class="f-brand">
@@ -262,6 +263,7 @@
     <span>FOUNDED &amp; DIRECTED BY SALMA</span>
   </div>
 </footer>
-
+ 
 </body>
 </html>
+ 
