@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitions &amp; Programs — MENA Maker Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:      #FFFFFF;
+    --paper:      #F6FAFD;
+    --tint:       #EAF3FA;
+    --ink:        #16283C;
+    --ink-soft:   #3C5872;
+    --slate:      #6C8296;
+    --blue:       #2E6FA8;
+    --blue-bright:#1E6FE0;
+    --amber:      #D98A2B;
+    --green:      #1E8E5A;
+    --line:       #DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; line-height:1.6; overflow-x:hidden; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3,.display{font-family:'IBM Plex Sans', sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
 
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; background:var(--white); }
+  .title-block span{padding:6px 12px; border-right:1px solid var(--line);}
+  .title-block span:last-child{border-right:none;}
+  .title-block .num{color:var(--amber);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono'; padding:8px 14px; border:1px solid transparent; transition:all .2s; text-transform:uppercase; letter-spacing:0.04em; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  @media(max-width:900px){ .navlinks{display:none;} }
+
+  .hero{padding:70px 0 50px; position:relative;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
+  .hero h1{font-size:clamp(32px,5vw,50px); line-height:1.1; max-width:760px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:640px;}
+
+  section{padding:70px 0;}
+  section h2{font-size:clamp(24px,3.4vw,32px); margin-bottom:14px;}
+  section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:680px; margin-bottom:40px;}
+  .section-alt{background:var(--paper);}
+
+  /* Philosophy callout */
+  .callout{ border-left:3px solid var(--amber); background:#FBF3E8; padding:24px 28px; margin: 8px 0 0; }
+  .callout p{ color:#5A3E17; font-size:16px; max-width:720px; }
+  .callout p+p{margin-top:10px;}
+
+  /* ISEF explainer */
+  .isef-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media(max-width:820px){ .isef-grid{grid-template-columns:1fr;} }
+  .isef-grid p{color:var(--ink-soft); margin-bottom:12px; font-size:15px;}
+  .pathway-list{display:flex; flex-direction:column; gap:14px; margin-top:6px;}
+  .pathway{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white);}
+  .pathway .flag{font-family:'IBM Plex Mono'; font-size:10px; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;}
+  .pathway h4{font-size:15px; margin-bottom:6px;}
+  .pathway p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+  .pathway.gap{border-color:var(--amber); background:#FFFCF6;}
+  .pathway.gap .flag{color:var(--amber);}
+
+  /* Programs grid */
+  .season-label{ font-family:'IBM Plex Mono'; font-size:12px; color:var(--blue); text-transform:uppercase; letter-spacing:0.06em; margin: 36px 0 16px; display:flex; align-items:center; gap:10px; }
+  .season-label::after{content:''; flex:1; height:1px; background:var(--line);}
+  .prog-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media(max-width:820px){ .prog-grid{grid-template-columns:1fr;} }
+  .prog-card{border:1px solid var(--line); background:var(--white); padding:20px 22px; border-radius:4px;}
+  .prog-card h4{font-size:15.5px; margin-bottom:6px;}
+  .prog-card p{font-size:13.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .prog-meta{display:flex; gap:8px; flex-wrap:wrap;}
+  .prog-tag{font-family:'IBM Plex Mono'; font-size:10px; border:1px solid var(--line); color:var(--ink-soft); padding:3px 8px; border-radius:20px;}
+  .prog-tag.deadline{border-color:var(--blue); color:var(--blue); background:var(--tint);}
+  .prog-tag.free{border-color:var(--green); color:var(--green);}
+
+  .verify-note{ margin-top:28px; border-left:3px solid var(--blue); background:var(--tint); padding:14px 18px; font-size:13.5px; color:var(--ink-soft); }
+
+  /* MMI competitions */
+  .mmi-comp{border:1.5px dashed var(--blue); border-radius:6px; padding:40px; text-align:left; background:var(--paper);}
+  @media(max-width:720px){ .mmi-comp{padding:26px 20px;} }
+  .mmi-comp h3{font-size:20px; margin-bottom:10px;}
+  .mmi-comp p{color:var(--ink-soft); font-size:15px; max-width:640px;}
+  .mmi-comp .status-tag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px; display:inline-block; border:1px solid var(--amber); padding:4px 10px; border-radius:20px;}
+
+  /* Stories & Follow */
+  .follow-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media(max-width:820px){ .follow-grid{grid-template-columns:1fr;} }
+  .follow-card{border:1px solid var(--line); border-radius:4px; padding:26px; background:var(--white);}
+  .follow-card h3{font-size:17px; margin-bottom:10px;}
+  .follow-card p{color:var(--ink-soft); font-size:14px; margin-bottom:16px;}
+  .roadmap-mini{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .rmi{display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--ink-soft);}
+  .rmi .dot{width:7px; height:7px; border-radius:50%; background:var(--blue); margin-top:5px; flex-shrink:0;}
+  .btn{ font-family:'IBM Plex Mono'; font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; padding:11px 20px; text-decoration:none; display:inline-block; border:1.5px solid var(--blue-bright); border-radius:3px; color:var(--blue-bright); transition:all .18s; }
+  .btn:hover{background:var(--blue-bright); color:#fff;}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:11px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index.html#start-here">Start Here</a>
+      <a href="index.html#vault">Vault</a>
+      <a href="index.html#playbook">Playbook</a>
+      <a href="competitions.html" class="active">Competitions</a>
+      <a href="index.html#horizon">Horizon</a>
+      <a href="index.html#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;002</div>
+    <h1>Competitions &amp; Programs</h1>
+    <p class="lede">A clear guideline, real tools, and resources tailored to you — where to take a project once you've built it, which programs you're actually eligible for, and the deadlines that matter. Read the note below first, though — it matters more than any of it.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <p><strong>Important, before anything else on this page: the trophy isn't the point.</strong> ISEF, the programs below, MMI's own contests — every one of them exists to give you a reason to keep building and a room to show it in. They are not the goal. The actual value was always the project itself — the thing you got curious enough to finish, the bug you chased down at 2am, the question you followed because it mattered to <em>you</em>, not because a judge might like it.</p>
+      <p>Competitions are one of the places you can bring that work once it exists. They are not why you should start. Build things that matter to you first — this page just makes sure that when you're ready to show someone, you know exactly where to go, with a clear guideline and real resources built for where you're starting from, not generic advice written for someone else's context.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="isef">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Explainer</span><span>What ISEF Actually Is</span></div>
+    <h2>The world's largest pre-college science fair — and how you actually get there</h2>
+    <div class="isef-grid">
+      <div>
+        <p>Regeneron ISEF (International Science and Engineering Fair) is a week-long international competition where around 1,800 finalists from more than 75 countries present original research for judging, scholarships, and prizes worth several million dollars combined.</p>
+        <p>The important part almost nobody explains clearly: <strong>you can't apply to ISEF directly.</strong> You qualify by placing highly at a "Society-affiliated" fair in your own country or region first — ISEF is the last stop in a chain, not something you enter cold. Fair season generally runs from around January through April, with the international event itself in May.</p>
+        <p>Every entry is one project, individual or in a team of up to three, built on a maximum of twelve continuous months of research.</p>
+      </div>
+      <div>
+        <div class="pathway-list">
+          <div class="pathway">
+            <div class="flag">Egypt</div>
+            <h4>Two active pathways</h4>
+            <p><strong>ISEF Egypt</strong>, run by the Arab Science &amp; Technology Foundation (ASTF), is the official Society-for-Science affiliate — the direct route to Regeneron ISEF. <strong>EISTF</strong> (Egypt International Science &amp; Technology Fair) is a second, separate Cairo-based fair also open to students nationwide. Worth entering both if eligible.</p>
+          </div>
+          <div class="pathway gap">
+            <div class="flag">Bahrain — Known Gap</div>
+            <h4>No dedicated affiliated fair found</h4>
+            <p>We couldn't confirm a Society-affiliated fair based in Bahrain at the time of writing. If you're based there, check Society for Science's official <strong>Find-a-Fair</strong> directory directly (societyforscience.org) before assuming there's no path — affiliations open and change. This is a real gap in the regional pipeline, and part of why the Playbook module exists.</p>
+          </div>
+          <div class="pathway">
+            <div class="flag">Anywhere in MENA</div>
+            <h4>Default: Find-a-Fair</h4>
+            <p>If your country isn't listed above, the Society for Science's official directory is the authoritative source for what's currently affiliated near you — it updates as fairs affiliate each year, so check it directly rather than relying on any static list, including this one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Resource</span><span>Programs &amp; Deadlines</span></div>
+    <h2>Research programs and camps open to students outside the US</h2>
+    <p class="intro">Every program below explicitly accepts international students and lists real deadlines we could verify. Dates shift slightly year to year — always confirm the exact date on the program's own site before you plan around it.</p>
+
+    <div class="season-label">Fall Deadlines (Oct–Dec)</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>Yale Young Global Scholars (YYGS) — Early Action</h4>
+        <p>Two-week residential program at Yale across Science &amp; Technology, Politics &amp; Economics, or Global Challenges tracks. Need-based aid available to international students, up to full tuition.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Early Action ~mid-Oct</span><span class="prog-tag">Grades 10–11</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Telluride Association Summer Seminars (TASS)</h4>
+        <p>Fully-funded six-week seminar program (travel included) for rising juniors, with a long track record of producing scholars and public leaders.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">~Mid-January</span><span class="prog-tag free">Fully funded</span></div>
+      </div>
+    </div>
+
+    <div class="season-label">Winter Deadlines (Jan–Feb)</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>Yale Young Global Scholars — Regular Decision</h4>
+        <p>Same program as above; later deadline if you miss Early Action.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">~Early January</span><span class="prog-tag">Grades 10–11</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Summer Science Program (SSP)</h4>
+        <p>39-day residential research program — teams calculate real asteroid orbits or run genomics/biochemistry research using professional tools. Rising seniors from any country; need-based aid available.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Late February</span><span class="prog-tag">Rising seniors</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Garcia Research Scholars (Stony Brook University)</h4>
+        <p>Seven-week lab research program in materials science, biomedical engineering, or molecular biology, working on real faculty-led projects.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Early–mid February</span><span class="prog-tag">Juniors &amp; seniors</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>ASSIP (George Mason University)</h4>
+        <p>Eight-week full-time research role under university faculty across robotics, neuroscience, environmental science, and bioengineering. Remote and in-person tracks.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Early February</span><span class="prog-tag">Age 15+</span></div>
+      </div>
+    </div>
+
+    <div class="season-label">Rolling / Ongoing</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>ISEF-Affiliated Fairs (Egypt: ASTF / EISTF)</h4>
+        <p>Local and national fair season — the actual pathway to Regeneron ISEF. Registration windows vary by fair; check each site directly each autumn.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Season: Jan–Apr</span><span class="prog-tag free">Free to enter</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Qatar Foundation Regional Camps (Mukhayamna, Qatar Invents)</h4>
+        <p>Gulf-based summer camps in computing, quantum science, and hands-on engineering design, hosted at Education City. Primarily Qatar-based but worth checking eligibility if you're in the Gulf.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">Applications open spring</span><span class="prog-tag">Regional</span></div>
+      </div>
+    </div>
+
+    <div class="verify-note">We link every program to its official source where possible and re-check this list periodically — but treat every date here as a starting point for your own search, not a final answer. Programs change eligibility rules and deadlines without much notice.</div>
+  </div>
+</section>
+
+<section class="section-alt" id="mmi-competitions">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Coming Soon</span><span>MMI's Own Competitions</span></div>
+    <div class="mmi-comp">
+      <span class="status-tag">In Development</span>
+      <h3>Regular knowledge challenges, prizes, and sponsorship</h3>
+      <p>Alongside pointing you toward external fairs, MMI is building its own recurring competitions — short knowledge challenges to test what you've learned from the Vault, with real prizes and sponsor support, plus the annual <strong>Horizon Challenge</strong> hackathon. This is genuinely still in development, not live yet — the honest version of this section will grow as the board comes together. Check the <a href="index.html#horizon" style="color:var(--blue);">Horizon Challenge</a> section for what's confirmed so far.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>Coming Soon</span><span>Follow &amp; Read Stories</span></div>
+    <h2>Real MENA students, what they built, and where it took them</h2>
+    <p class="intro">This section is genuinely empty right now — no stories published, no Instagram live yet. Here's what's planned, so you know what to expect rather than finding a placeholder with no context.</p>
+    <div class="follow-grid">
+      <div class="follow-card">
+        <h3>Read Stories</h3>
+        <p>Profiles of MENA students who've built real projects with this kind of hardware and research — what they made, what went wrong, and where it took them afterward. None published yet; this launches once the first cohort of blueprint-built projects exists to write about.</p>
+      </div>
+      <div class="follow-card">
+        <h3>Speaker Series</h3>
+        <p>Planned meetups and interviews, starting small and growing with the initiative:</p>
+        <div class="roadmap-mini">
+          <div class="rmi"><span class="dot"></span>Phase 1 — University students currently studying engineering, sharing what actually got them in</div>
+          <div class="rmi"><span class="dot"></span>Phase 2 — Faculty members and research mentors</div>
+          <div class="rmi"><span class="dot"></span>Phase 3 — Past ISEF winners and more prominent voices in the field, as MMI's reach grows</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>An independent, open-access initiative teaching hands-on engineering to students across the region, in Arabic and English, from first principles to international science fairs.</p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
