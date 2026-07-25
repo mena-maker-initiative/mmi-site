@@ -66,6 +66,13 @@
   .btn{ font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; padding:15px 32px; text-decoration:none; display:inline-block; border:1.5px solid var(--blue-bright); border-radius:3px; transition:all .18s; }
   .btn-primary{background:var(--blue-bright); border-color:var(--blue-bright); color:#fff; font-weight:600;}
   .btn-primary:hover{background:var(--blue);}
+  .deadline-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin:22px 0 28px;}
+  .dbox{border:1px solid var(--blue); background:var(--white); padding:14px 22px; border-radius:4px; text-align:left; min-width:220px;}
+  .dbox .dl{font-family:'IBM Plex Mono'; font-size:10px; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;}
+  .dbox .dv{font-family:'IBM Plex Sans'; font-weight:700; font-size:15px; color:var(--ink);}
+  .meet-board{border:1.5px dashed var(--blue); border-radius:6px; padding:36px; text-align:center; background:var(--paper);}
+  .meet-board .status-tag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:12px; display:inline-block; border:1px solid var(--amber); padding:4px 10px; border-radius:20px;}
+  .meet-board p{color:var(--ink-soft); font-size:14.5px; max-width:560px; margin:0 auto;}
 
   footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
   footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; max-width:1100px;}
@@ -87,6 +94,7 @@
       <a href="playbook.html">Playbook</a>
       <a href="competitions.html">Competitions</a>
       <a href="index.html#horizon">Horizon</a>
+      <a href="board.html" class="active">Board</a>
       <a href="index.html#about">About</a>
     </div>
   </div>
@@ -158,7 +166,22 @@
     <div class="apply-box">
       <h2>Ready to apply?</h2>
       <p>The form takes about 10 minutes. Tell us which seat interests you most — or if you're not sure, say so, and we'll help you find the right fit.</p>
+      <div class="deadline-row">
+        <div class="dbox"><div class="dl">Applications Close</div><div class="dv">Tuesday, August 18, 2026 — 11:59 PM (GMT+3)</div></div>
+        <div class="dbox"><div class="dl">Shortlist Contacted By</div><div class="dv">Tuesday, August 25, 2026</div></div>
+      </div>
+      <p style="font-size:13px;">Submissions are reviewed carefully after the deadline closes — shortlisted applicants will hear back by email.</p>
       <a href="https://forms.gle/yttRRVHgDYkM8RoRA" class="btn btn-primary" target="_blank" rel="noopener">Apply for a Board Seat →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Coming Soon</span><span>Meet the Board</span></div>
+    <div class="meet-board">
+      <span class="status-tag">Not Yet Filled</span>
+      <p>Once these four founding seats are filled, this is where you'll find the people behind MMI — who they are, what they own, and how to reach them. Nothing to show yet, honestly — check back after August 25.</p>
     </div>
   </div>
 </section>
