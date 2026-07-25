@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Board — MENA Maker Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --paper:#F6FAFD; --tint:#EAF3FA; --ink:#16283C; --ink-soft:#3C5872;
+    --slate:#6C8296; --blue:#2E6FA8; --blue-bright:#1E6FE0; --amber:#D98A2B; --green:#1E8E5A; --line:#DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; line-height:1.6; overflow-x:hidden; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3{font-family:'IBM Plex Sans', sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
 
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; background:var(--white); }
+  .title-block span{padding:6px 12px; border-right:1px solid var(--line);}
+  .title-block span:last-child{border-right:none;}
+  .title-block .num{color:var(--amber);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1100px;}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono'; padding:8px 14px; border:1px solid transparent; transition:all .2s; text-transform:uppercase; letter-spacing:0.04em; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  @media(max-width:900px){ .navlinks{display:none;} }
+
+  .hero{padding:70px 0 40px;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
+  .hero h1{font-size:clamp(32px,5vw,48px); line-height:1.1; max-width:700px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:640px;}
+
+  section{padding:56px 0;}
+  section h2{font-size:clamp(22px,3vw,28px); margin-bottom:14px;}
+  .section-alt{background:var(--paper);}
+
+  .callout{ border-left:3px solid var(--amber); background:#FBF3E8; padding:18px 22px; margin: 8px 0 0; }
+  .callout p{ color:#5A3E17; font-size:14.5px; }
+
+  .role-detail{border:1px solid var(--line); border-radius:6px; padding:26px 28px; margin-bottom:18px; background:var(--white);}
+  .role-detail .rn{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;}
+  .role-detail h3{font-size:19px; margin-bottom:10px;}
+  .role-detail p{font-size:14.5px; color:var(--ink-soft); margin-bottom:12px;}
+  .role-meta{display:flex; gap:8px; flex-wrap:wrap;}
+  .rm-tag{font-family:'IBM Plex Mono'; font-size:10.5px; border:1px solid var(--line); color:var(--ink-soft); padding:4px 10px; border-radius:20px;}
+
+  .flow{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .flow-step{display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); background:var(--white);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); font-weight:700; flex-shrink:0; width:24px;}
+  .flow-step h4{font-size:15px; margin-bottom:5px;}
+  .flow-step p{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  .apply-box{border:1.5px solid var(--blue); border-radius:8px; padding:44px; text-align:center; background:var(--tint);}
+  @media(max-width:600px){ .apply-box{padding:28px 20px;} }
+  .apply-box h2{margin-bottom:12px;}
+  .apply-box p{color:var(--ink-soft); font-size:15px; max-width:520px; margin:0 auto 24px;}
+  .btn{ font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; padding:15px 32px; text-decoration:none; display:inline-block; border:1.5px solid var(--blue-bright); border-radius:3px; transition:all .18s; }
+  .btn-primary{background:var(--blue-bright); border-color:var(--blue-bright); color:#fff; font-weight:600;}
+  .btn-primary:hover{background:var(--blue);}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; max-width:1100px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:11px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; max-width:1100px; margin-left:auto; margin-right:auto;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index.html#start-here">Start Here</a>
+      <a href="index.html#vault">Vault</a>
+      <a href="playbook.html">Playbook</a>
+      <a href="competitions.html">Competitions</a>
+      <a href="index.html#horizon">Horizon</a>
+      <a href="index.html#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;004</div>
+    <h1>Join the Board</h1>
+    <p class="lede">Five seats, real responsibility, and direct ownership over a specific part of MMI. This isn't a resume line — it's actual work with actual output attached to your name.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="callout"><p><strong>Before you apply:</strong> every seat here has a genuine deliverable attached — blueprints published, translations shipped, fairs indexed, sign-ups driven. This is a working board, not an honorary one. If that's what you want, keep reading.</p></div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Roles</span><span>The Five Seats</span></div>
+    <h2>What each seat actually does</h2>
+
+    <div class="role-detail">
+      <div class="rn">Seat 01</div>
+      <h3>Technical Layout Lead</h3>
+      <p>Owns the visual and formatting standard for every blueprint that goes into the Vault — schematic diagrams, PDF layout consistency, the title-block system. You'll work directly from the BP-001–003 template and extend it as new blueprints get added.</p>
+      <div class="role-meta"><span class="rm-tag">Design / technical</span><span class="rm-tag">~3–5 hrs/week</span><span class="rm-tag">Figma, Canva, or code-based design helpful</span></div>
+    </div>
+
+    <div class="role-detail">
+      <div class="rn">Seat 02</div>
+      <h3>Academic &amp; Strategy Coordinator</h3>
+      <p>Drives the Playbook module forward — expanding the Regional Pipeline Index with verified fair data, researching and vetting program listings, and keeping the Standardized Integration Timeline realistic and current.</p>
+      <div class="role-meta"><span class="rm-tag">Research-heavy</span><span class="rm-tag">~3–5 hrs/week</span><span class="rm-tag">Strong fact-checking instincts</span></div>
+    </div>
+
+    <div class="role-detail">
+      <div class="rn">Seats 03 &amp; 04</div>
+      <h3>Technical Editor &amp; Translator (×2)</h3>
+      <p>Localizes every blueprint and Playbook resource into precise technical Arabic — the core of what makes MMI different from every English-only maker resource out there. You'll review and refine the machine-assisted drafts already in the Vault, then translate new material as it's written.</p>
+      <div class="role-meta"><span class="rm-tag">Fluent technical Arabic</span><span class="rm-tag">~4–6 hrs/week</span><span class="rm-tag">Engineering background helpful, not required</span></div>
+    </div>
+
+    <div class="role-detail">
+      <div class="rn">Seat 05</div>
+      <h3>Marketing &amp; Outreach Manager</h3>
+      <p>Owns MMI's public presence — launching and running the Instagram, driving the digital distribution push into schools and STEM communities across the region, and leading sign-ups for the Horizon Challenge. If MMI is going to reach students who need it, this seat is how.</p>
+      <div class="role-meta"><span class="rm-tag">Content &amp; community</span><span class="rm-tag">~4–6 hrs/week</span><span class="rm-tag">Instagram/social fluency, regional student network a plus</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Process</span><span>How Applications Work</span></div>
+    <h2>What happens after you apply</h2>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-num">01</div><div><h4>Submit the application</h4><p>Short form — who you are, which seat(s) interest you, and why. Takes about 10 minutes.</p></div></div>
+      <div class="flow-step"><div class="flow-num">02</div><div><h4>Short follow-up conversation</h4><p>A quick call or message exchange with the Executive Director — not a formal interview, just making sure the fit is real on both sides.</p></div></div>
+      <div class="flow-step"><div class="flow-num">03</div><div><h4>Onboarding</h4><p>You get direct access to the relevant part of the Vault or Playbook and a first real task within your first week — no long ramp-up period.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="apply-box">
+      <h2>Ready to apply?</h2>
+      <p>The form takes about 10 minutes. Tell us which seat interests you most — or if you're not sure, say so, and we'll help you find the right fit.</p>
+      <a href="REPLACE_WITH_YOUR_GOOGLE_FORM_LINK" class="btn btn-primary">Apply for a Board Seat →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>An independent, open-access initiative teaching hands-on engineering to students across the region, in Arabic and English, from first principles to international science fairs.</p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
