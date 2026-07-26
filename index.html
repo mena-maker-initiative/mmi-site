@@ -131,6 +131,10 @@
   /* Cards */
   .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
   @media(max-width:820px){ .grid3{grid-template-columns:1fr;} }
+  .grid5{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  @media(max-width:900px){ .grid5{grid-template-columns:repeat(3,1fr);} }
+  @media(max-width:600px){ .grid5{grid-template-columns:1fr 1fr;} }
+  @media(max-width:420px){ .grid5{grid-template-columns:1fr;} }
   .card{
     border:1px solid var(--line); background:var(--white);
     padding:26px; position:relative; transition:border-color .2s, transform .2s, box-shadow .2s; border-radius:4px;
@@ -195,7 +199,7 @@
     <div class="navlinks">
       <a href="#vault">Vault</a>
       <a href="playbook.html">Playbook</a>
-      <a href="competitions.html">Competitions</a>
+      <a href="database.html">Database</a>
       <a href="horizon.html">Horizon</a>
       <a href="board.html">Board</a>
       <a href="#about">About</a>
@@ -207,8 +211,8 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;001</div>
-    <h1>Learn to build.<br>In <em>Arabic and English</em>,<br>from zero to ISEF.</h1>
-    <p class="lede">A free, open-access platform teaching hands-on engineering to students across the region — starting from "what is a microcontroller" and ending at your first international science fair submission.</p>
+    <h1>Reach for the stages<br>you didn't know<br><em>were open to you.</em></h1>
+    <p class="lede">MMI exists because the barrier was never talent — it was exposure. Free, bilingual paths into engineering, science Olympiads, research competitions, and the university opportunities most MENA students never hear about until it's too late to enter.</p>
     <div class="btn-row">
       <a href="#start-here" class="btn btn-primary">Start Here — No Experience Needed</a>
       <a href="#vault" class="btn btn-ghost">Browse the Vault</a>
@@ -240,9 +244,9 @@
     <div class="about-grid">
       <div>
         <h2>Why MMI exists</h2>
-        <p>Most hands-on engineering education — wiring guides, project tutorials, competition prep — is written for students who already read technical English fluently. That leaves out a huge number of capable students across the Arab world before they've even started.</p>
-        <p>MMI is an independent, open-access platform that removes that barrier. Every blueprint is a complete build guide in both English and Arabic. Every student, regardless of where they're starting from, gets a clear path from "I don't know what a microcontroller is" to a real project worth submitting to a science fair.</p>
-        <p>We're not a company and we don't sell anything — everything on this site is free, and the board that runs it is entirely student-led.</p>
+        <p>MENA youth aren't short on ambition — global surveys consistently rank the region among the highest in the world for entrepreneurial intent and drive. What's missing isn't potential, it's exposure. Students in systems built to find and train talent early — Olympiad pipelines that start in primary school, research programs advertised in every classroom — grow up assuming they belong on a global stage. Most MENA students first realize "I could have done that" in their final year of school, once it's too late to start.</p>
+        <p>MMI exists to close that gap. It started as a bilingual engineering resource, and that's still where the Vault runs deepest today — but the mission was never just engineering. It's making sure every capable student in the region knows the full landscape of what's actually open to them: competitions, Olympiads, research opportunities, and universities most never hear about until years too late.</p>
+        <p>We're not a company and we don't sell anything — everything on this site is free, in both Arabic and English, and the board that runs it is entirely student-led.</p>
       </div>
       <div>
         <h3 style="font-size:15px; text-transform:uppercase; letter-spacing:0.05em; color:var(--blue); font-family:'IBM Plex Mono'; margin-bottom:18px;">Roadmap</h3>
@@ -302,10 +306,12 @@
 
 <section id="vault">
   <div class="wrap">
-    <div class="title-block"><span class="num">02</span><span>Module</span><span>The Blueprint Vault</span></div>
-    <h2>Complete build guides. Beginner-friendly. No experience required.</h2>
-    <p class="intro">Each blueprint below is a full walkthrough — parts list with prices, wiring diagrams, step-by-step assembly, annotated code, and a troubleshooting guide — written in plain language and available in both English and Arabic.</p>
-    <div class="grid3">
+    <div class="title-block"><span class="num">02</span><span>Module</span><span>The Vault</span></div>
+    <h2>Complete, practical guides. Beginner-friendly. No experience required.</h2>
+    <p class="intro">Every resource in the Vault answers one question: after reading this, what can you actually go and do? No theory summaries, no textbook notes — full walkthroughs with parts lists, worked examples, and clear next steps, in both English and Arabic. Organized into branches; two are live today, five more are on the roadmap.</p>
+
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">Engineering &amp; Hardware</h3>
+    <div class="grid3" style="margin-bottom:44px;">
       <div class="card">
         <span class="tag">BP&#8209;001 · Microcontrollers</span>
         <h3>Architecture of Autonomous Sensor Arrays</h3>
@@ -327,6 +333,40 @@
         <span class="status live">● Available</span>
         <div class="lang-row"><a href="blueprints/BP-003_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-003_AR.pdf" class="lang-pill on">AR ↓</a></div>
       </div>
+    </div>
+
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">Research &amp; Scientific Writing</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag">RS&#8209;001 · Behavioral Science</span>
+        <h3>Researching Human Behavior: A Scope Guide</h3>
+        <p>Design an ethical, ISEF-compliant study on how people think, decide, or act — no lab required.</p>
+        <span class="status live">● Available</span>
+        <div class="lang-row"><a href="blueprints/RS-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag">RS&#8209;002 · Environmental Science</span>
+        <h3>Field Research Without a Lab: A Scope Guide</h3>
+        <p>Run a real environmental or earth science study using your own city as the field site.</p>
+        <span class="status live">● Available</span>
+        <div class="lang-row"><a href="blueprints/RS-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag">RS&#8209;003 · Data Science</span>
+        <h3>Original Research from Public Data: A Scope Guide</h3>
+        <p>Ask an original research question and answer it using datasets that already exist — zero cost.</p>
+        <span class="status live">● Available</span>
+        <div class="lang-row"><a href="blueprints/RS-003_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-003_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--slate); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">More Branches — Coming to the Vault</h3>
+    <div class="grid5">
+      <div class="card" style="padding:18px;"><span class="tag">Software &amp; AI</span><h3 style="font-size:14px;">Building real software &amp; AI projects</h3><span class="status pending">○ Coming Soon</span></div>
+      <div class="card" style="padding:18px;"><span class="tag">Mathematics</span><h3 style="font-size:14px;">Getting started with Olympiad math</h3><span class="status pending">○ Coming Soon</span></div>
+      <div class="card" style="padding:18px;"><span class="tag">Programming</span><h3 style="font-size:14px;">Competitive programming from zero</h3><span class="status pending">○ Coming Soon</span></div>
+      <div class="card" style="padding:18px;"><span class="tag">Biomedical</span><h3 style="font-size:14px;">First biomedical engineering project</h3><span class="status pending">○ Coming Soon</span></div>
+      <div class="card" style="padding:18px;"><span class="tag">Environmental</span><h3 style="font-size:14px;">Designing your first field project</h3><span class="status pending">○ Coming Soon</span></div>
     </div>
   </div>
 </section>
@@ -379,7 +419,7 @@
     <div class="title-block"><span class="num">05</span><span>Team</span><span>Operational Board</span></div>
     <h2>Four seats. One mission.</h2>
     <p class="intro">These are founding leadership positions. Each board member owns a core function of MMI, has the autonomy to improve it, and works closely with the rest of the board to shape the organization's growth. As MMI expands, board members will recruit, mentor, and lead volunteers or interns within their area — building teams that multiply MMI's impact across the region.</p>
-    <div class="board-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="board-grid">
       <div class="role-card">
         <div class="rn">SEAT 01</div>
         <h4>Research &amp; Resources Lead</h4>
@@ -410,6 +450,7 @@
     <div class="f-brand">
       <div class="logo"><span class="logo-mark"></span> MMI</div>
       <p>An independent, open-access initiative teaching hands-on engineering to students across the region, in Arabic and English, from first principles to international science fairs.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);">salmaraies14@gmail.com</a></p>
     </div>
     <div class="f-links">
       <div class="f-col">
@@ -417,7 +458,7 @@
         <a href="#start-here">Start Here</a>
         <a href="#vault">Blueprint Vault</a>
         <a href="playbook.html">Playbook</a>
-        <a href="competitions.html">Competitions</a>
+        <a href="database.html">Database</a>
       </div>
       <div class="f-col">
         <h5>Involved</h5>
