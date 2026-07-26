@@ -67,7 +67,14 @@
     text-transform:uppercase; letter-spacing:0.04em;
   }
   .navlinks a:hover{color:var(--blue-bright); background:var(--tint);}
-  @media(max-width:860px){ .navlinks{display:none;} }
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:1px solid var(--line); border-radius:4px; padding:9px 10px; cursor:pointer;}
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--ink);}
+  @media(max-width:900px){
+    .navlinks{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--white); border-bottom:1px solid var(--line); padding:10px 0; box-shadow:0 8px 16px rgba(22,40,60,0.08);}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 28px;}
+    .nav-toggle{display:flex;}
+  }
 
   .hero{padding:90px 0 70px; position:relative;}
   .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
@@ -186,7 +193,6 @@
   <div class="wrap">
     <a href="index.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
     <div class="navlinks">
-      <a href="#start-here">Start Here</a>
       <a href="#vault">Vault</a>
       <a href="playbook.html">Playbook</a>
       <a href="competitions.html">Competitions</a>
@@ -194,6 +200,7 @@
       <a href="board.html">Board</a>
       <a href="#about">About</a>
     </div>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="this.parentElement.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
