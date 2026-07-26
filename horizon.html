@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Horizon Challenge — MENA Maker Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --paper:#F6FAFD; --tint:#EAF3FA; --ink:#16283C; --ink-soft:#3C5872;
+    --slate:#6C8296; --blue:#2E6FA8; --blue-bright:#1E6FE0; --amber:#D98A2B; --green:#1E8E5A; --line:#DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; line-height:1.6; overflow-x:hidden; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3{font-family:'IBM Plex Sans', sans-serif; font-weight:700; letter-spacing:-0.01em; color:var(--ink);}
+
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; background:var(--white); }
+  .title-block span{padding:6px 12px; border-right:1px solid var(--line);}
+  .title-block span:last-child{border-right:none;}
+  .title-block .num{color:var(--amber);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1100px;}
+  .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono'; padding:8px 14px; border:1px solid transparent; transition:all .2s; text-transform:uppercase; letter-spacing:0.04em; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  @media(max-width:900px){ .navlinks{display:none;} }
+
+  .hero{padding:70px 0 40px;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px;}
+  .hero h1{font-size:clamp(32px,5vw,50px); line-height:1.1; max-width:700px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:660px; margin-bottom:14px;}
+  .hero p.lede2{font-size:15px; color:var(--ink-soft); max-width:660px;}
+  .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+  .fact-badge{font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.03em; border:1px solid var(--blue); color:var(--blue); padding:8px 16px; border-radius:20px; background:var(--tint);}
+  .fact-badge.open{border-color:var(--green); color:var(--green); background:#E7F5EE; font-weight:600;}
+
+  section{padding:56px 0;}
+  section h2{font-size:clamp(22px,3vw,28px); margin-bottom:14px;}
+  section > .wrap > p.intro{color:var(--ink-soft); font-size:15.5px; max-width:680px; margin-bottom:32px;}
+  .section-alt{background:var(--paper);}
+
+  .callout{ border-left:3px solid var(--amber); background:#FBF3E8; padding:18px 22px; margin: 8px 0 0; }
+  .callout p{ color:#5A3E17; font-size:14.5px; }
+  .callout.blue{ border-left-color:var(--blue); background:var(--tint); }
+  .callout.blue p{ color:var(--ink-soft); }
+
+  .assumption{ border:1px dashed var(--amber); background:#FFFCF6; padding:12px 16px; font-size:13px; color:#5A3E17; margin-bottom:30px; }
+
+  .cat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:780px){ .cat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .cat-grid{grid-template-columns:1fr;} }
+  .cat-card{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white); font-size:14px; color:var(--ink); font-weight:500;}
+
+  .format-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .format-pill{font-family:'IBM Plex Mono'; font-size:11.5px; border:1px solid var(--blue); color:var(--blue); padding:6px 12px; border-radius:20px; background:var(--tint);}
+
+  .flow{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .flow-step{display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); background:var(--white);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); font-weight:700; flex-shrink:0; width:24px;}
+  .flow-step h4{font-size:15px; margin-bottom:6px;}
+  .flow-step p{font-size:13.5px; color:var(--ink-soft); margin:0 0 4px;}
+  .flow-step ul{margin:6px 0 0 18px; padding:0;}
+  .flow-step li{font-size:13px; color:var(--ink-soft); margin-bottom:3px;}
+
+  .req-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin: 6px 0 10px;}
+  @media(max-width:780px){ .req-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .req-grid{grid-template-columns:1fr;} }
+  .req-chip{border:1px solid var(--line); border-radius:4px; padding:18px; background:var(--white);}
+  .req-chip h4{font-size:14px; margin-bottom:6px; color:var(--blue);}
+  .req-chip p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+
+  .rules-list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .rules-list li{display:flex; gap:10px; font-size:14px; color:var(--ink-soft); align-items:flex-start;}
+  .rules-list li::before{content:'—'; color:var(--blue); flex-shrink:0;}
+
+  .timeline-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .tbox{border:1px solid var(--line); background:var(--white); padding:16px 20px; border-radius:4px; min-width:170px; flex:1;}
+  .tbox .tl{font-family:'IBM Plex Mono'; font-size:10px; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:5px;}
+  .tbox .tv{font-family:'IBM Plex Sans'; font-weight:700; font-size:14.5px; color:var(--ink);}
+  .tbox.set .tv{color:var(--green);}
+
+  .apply-box{border:1.5px solid var(--blue); border-radius:8px; padding:44px; text-align:center; background:var(--tint);}
+  @media(max-width:600px){ .apply-box{padding:28px 20px;} }
+  .apply-box h2{margin-bottom:12px;}
+  .apply-box p{color:var(--ink-soft); font-size:15px; max-width:520px; margin:0 auto 24px;}
+  .btn{ font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; padding:15px 32px; text-decoration:none; display:inline-block; border:1.5px solid var(--blue-bright); border-radius:3px; transition:all .18s; }
+  .btn-primary{background:var(--blue-bright); border-color:var(--blue-bright); color:#fff; font-weight:600;}
+  .btn-primary:hover{background:var(--blue);}
+
+  .closing{text-align:center; padding:60px 0 80px;}
+  .closing p{font-size:17px; color:var(--ink-soft); max-width:520px; margin:0 auto 8px;}
+  .closing p.final{color:var(--ink); font-weight:600; margin-top:18px; font-size:18px;}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; max-width:1100px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:11px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; max-width:1100px; margin-left:auto; margin-right:auto;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index.html#start-here">Start Here</a>
+      <a href="index.html#vault">Vault</a>
+      <a href="playbook.html">Playbook</a>
+      <a href="competitions.html">Competitions</a>
+      <a href="horizon.html" class="active">Horizon</a>
+      <a href="board.html">Board</a>
+      <a href="index.html#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;005</div>
+    <h1>The Horizon Challenge</h1>
+    <p class="lede"><strong>Build something that matters.</strong> The Horizon Challenge is MMI's flagship 48-hour international virtual engineering innovation challenge, bringing together students from around the world to tackle real-world problems through engineering.</p>
+    <p class="lede2">You don't need a perfect prototype. You don't need expensive equipment. You need an idea worth exploring and the determination to build it.</p>
+    <div class="badge-row">
+      <span class="fact-badge">August 14–16, 2026</span>
+      <span class="fact-badge">Solo or Teams of Up to 3</span>
+      <span class="fact-badge open">Registration Open Now</span>
+    </div>
+    <p style="font-size:14px; color:var(--ink-soft); margin-top:16px;"><strong>Eligibility:</strong> open to high school students worldwide, ages 13 and up. International participants welcome — the challenge runs fully virtually.</p>
+  </div>
+</header>
+
+<section id="what-to-build">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Format</span><span>How It Starts</span></div>
+    <h2>Everyone starts from the same line</h2>
+    <p class="intro">At the official start of the challenge, five challenge statements are revealed at once — real problem areas, not fixed briefs. Teams pick <strong>one</strong> and build their entire submission around it for the next 48 hours. Nobody gets a head start on the actual problem, no matter how early they registered.</p>
+
+    <div class="cat-grid">
+      <div class="cat-card">Healthcare</div>
+      <div class="cat-card">Accessibility</div>
+      <div class="cat-card">Climate</div>
+      <div class="cat-card">Education</div>
+      <div class="cat-card">Robotics</div>
+    </div>
+    <p style="font-size:13px; color:var(--slate); margin-top:10px;">Example set shown above — the actual five statements are revealed only when the challenge begins.</p>
+
+    <div class="assumption" style="margin-top:26px;"><strong>One thing to know:</strong> this page assumes both physical hardware builds and simulated/software-only submissions are equally welcome, regardless of which statement you pick — a deliberate choice to keep the challenge accessible to students without equal access to hardware.</div>
+
+    <h3 style="font-size:16px; margin:28px 0 4px;">What your submission can look like</h3>
+    <p style="font-size:14px; color:var(--ink-soft); margin-bottom:6px;">Whether your final submission is a working prototype, a simulation, a CAD model, an AI-assisted solution, or a well-developed engineering concept — we want to see what you create.</p>
+
+    <div class="format-list">
+      <span class="format-pill">Physical hardware prototype</span>
+      <span class="format-pill">Wokwi / Tinkercad simulation</span>
+      <span class="format-pill">AI-powered solution</span>
+      <span class="format-pill">Web or mobile app</span>
+      <span class="format-pill">CAD model or design</span>
+      <span class="format-pill">Circuit / PCB design</span>
+      <span class="format-pill">Embedded systems project</span>
+      <span class="format-pill">Engineering simulation</span>
+      <span class="format-pill">Research-backed concept</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="ai-policy">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Policy</span><span>AI Use</span></div>
+    <h2>AI is welcome. Engineering judgment comes first.</h2>
+    <div class="callout blue">
+      <p>AI tools are welcome for brainstorming, research, coding support, debugging, prototyping, and design exploration. But every participant must understand, verify, and be able to explain every part of their submission. AI should accelerate your engineering process — it can't replace your engineering thinking.</p>
+    </div>
+  </div>
+</section>
+
+<section id="submission">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Requirements</span><span>What to Submit</span></div>
+    <h2>Five parts to every submission</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>Project Information</h4><p>Project title, team member names, contact email, challenge category.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>Problem Statement</h4><p>What real-world problem are you solving, and why does it matter?</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>Your Solution</h4><p>Your engineering approach, how it works, and the reasoning behind your design decisions.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div><h4>Supporting Materials</h4><p>Anything that helps judges understand your work:</p>
+        <ul><li>GitHub repository</li><li>Live website or application</li><li>Wokwi simulation</li><li>CAD files / PCB designs</li><li>Circuit diagrams, images, or screenshots</li><li>Research documentation or prototype photos</li></ul></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div><h4>Project Presentation</h4><p>Either a 2–3 minute video, or a 1–2 page PDF summary, covering: what you built, what problem it solves, how it works, what tools you used, what challenges you overcame, and — if you used AI — how it contributed to your process.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="judging">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>Evaluation</span><span>Judging Criteria</span></div>
+    <h2>What judges are looking for</h2>
+    <div class="callout blue" style="margin-bottom:30px;">
+      <p><strong>Independent Judging Panel.</strong> Projects are evaluated by an independent panel of university engineering students, researchers, and industry professionals — to ensure a fair and technically rigorous judging process.</p>
+    </div>
+    <div class="req-grid">
+      <div class="req-chip"><h4>Engineering Thinking</h4><p>The reasoning behind your decisions, not just the result.</p></div>
+      <div class="req-chip"><h4>Innovation &amp; Creativity</h4><p>Original angles on the problem.</p></div>
+      <div class="req-chip"><h4>Technical Quality</h4><p>How well the thing actually works.</p></div>
+      <div class="req-chip"><h4>Feasibility</h4><p>Could this realistically function beyond the challenge?</p></div>
+      <div class="req-chip"><h4>Real-World Impact</h4><p>Does it address a problem that matters?</p></div>
+      <div class="req-chip"><h4>Communication</h4><p>Can you explain it clearly to someone outside your team?</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="title-block"><span class="num">05</span><span>Rules</span><span>Guidelines</span></div>
+    <h2>Keep it fair, keep it honest</h2>
+    <div class="callout" style="margin-bottom:26px;">
+      <p><strong>What "48 hours" actually means:</strong> during the official challenge period, you're expected to develop the <em>core</em> of your project — the engineering solution itself should be conceived and developed during the challenge, once your team's chosen statement is revealed. Preparing beforehand is fully welcome: forming your team, learning new tools, installing software, and gathering materials are all fair game ahead of time.</p>
+    </div>
+    <ul class="rules-list">
+      <li>Open to high school students worldwide, ages 13 and up — international participants welcome, the challenge runs fully virtually.</li>
+      <li>Participants may compete individually or in teams of up to three.</li>
+      <li>Your challenge statement is chosen from the five revealed at the official start — the core engineering solution is built during the 48-hour window, not before.</li>
+      <li>Pre-challenge prep (team formation, learning tools, installing software, gathering materials) is welcome and encouraged.</li>
+      <li>All submissions must be original.</li>
+      <li>Existing libraries, open-source software, and publicly available resources may be used where appropriately credited.</li>
+      <li>AI is permitted under the AI policy above.</li>
+      <li>Participants should be ready to explain every aspect of their submission if a judge asks.</li>
+      <li>Be respectful, collaborative, and uphold academic integrity throughout.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-alt" id="timeline">
+  <div class="wrap">
+    <div class="title-block"><span class="num">06</span><span>Schedule</span><span>Timeline</span></div>
+    <h2>Dates are confirmed</h2>
+    <p class="intro">Registration is open right now. Exact start/end times on August 14 and 16 will be confirmed closer to the date — the days themselves are locked in.</p>
+    <div class="timeline-row">
+      <div class="tbox set"><div class="tl">Registration Opens</div><div class="tv">Open Now</div></div>
+      <div class="tbox set"><div class="tl">Registration Deadline</div><div class="tv">Wed, August 12, 2026</div></div>
+      <div class="tbox set"><div class="tl">Challenge Begins</div><div class="tv">Fri, August 14, 2026</div></div>
+      <div class="tbox set"><div class="tl">Challenge Ends</div><div class="tv">Sun, August 16, 2026</div></div>
+      <div class="tbox"><div class="tl">Results Announced</div><div class="tv">TBD</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <div class="wrap">
+    <div class="apply-box">
+      <h2>Registration is open now</h2>
+      <p>Open to high school students worldwide, ages 13+. Solo or in teams of up to three. Registration closes Wednesday, August 12, 2026 — the five challenge statements are revealed when the challenge begins on August 14.</p>
+      <a href="https://forms.gle/TYnhvwzDPEku9rvn7" class="btn btn-primary" target="_blank" rel="noopener">Register Now →</a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <p>You don't have to build the perfect project.</p>
+    <p>You don't have to know everything before you begin.</p>
+    <p class="final">You simply have to start.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>An independent, open-access initiative teaching hands-on engineering to students across the region, in Arabic and English, from first principles to international science fairs.</p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
