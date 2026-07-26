@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Competitions &amp; Programs — MENA Maker Initiative</title>
+<title>Opportunity Database — MENA Maker Initiative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -91,6 +91,17 @@
 
   .verify-note{ margin-top:28px; border-left:3px solid var(--blue); background:var(--tint); padding:14px 18px; font-size:13.5px; color:var(--ink-soft); }
 
+  /* Database category grid */
+  .dbcat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:820px){ .dbcat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .dbcat-grid{grid-template-columns:1fr;} }
+  .dbcat{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white);}
+  .dbcat h4{font-size:14px; margin-bottom:6px;}
+  .dbcat p{font-size:12px; color:var(--ink-soft); margin-bottom:10px;}
+  .dbcat-status{font-family:'IBM Plex Mono'; font-size:9.5px; text-transform:uppercase; letter-spacing:0.04em; padding:3px 9px; border-radius:20px; display:inline-block;}
+  .dbcat-status.live{background:#E7F5EE; color:var(--green);}
+  .dbcat-status.soon{background:#FBF3E8; color:var(--amber);}
+
   /* MMI competitions */
   .mmi-comp{border:1.5px dashed var(--blue); border-radius:6px; padding:40px; text-align:left; background:var(--paper);}
   @media(max-width:720px){ .mmi-comp{padding:26px 20px;} }
@@ -127,7 +138,7 @@
     <div class="navlinks">
       <a href="index.html#vault">Vault</a>
       <a href="playbook.html">Playbook</a>
-      <a href="competitions.html" class="active">Competitions</a>
+      <a href="database.html" class="active">Database</a>
       <a href="horizon.html">Horizon</a>
       <a href="board.html">Board</a>
       <a href="index.html#about">About</a>
@@ -139,8 +150,8 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;002</div>
-    <h1>Competitions &amp; Programs</h1>
-    <p class="lede">A clear guideline, real tools, and resources tailored to you — where to take a project once you've built it, which programs you're actually eligible for, and the deadlines that matter. Read the note below first, though — it matters more than any of it.</p>
+    <h1>Opportunity Database</h1>
+    <p class="lede">Competitions, Olympiads, scholarships, universities, research programs, fellowships, internships, grants, conferences, summer schools, and exchange opportunities — one searchable place, tailored to where you're actually starting from. Read the note below first, though — it matters more than any of it.</p>
   </div>
 </header>
 
@@ -150,6 +161,28 @@
       <p><strong>Important, before anything else on this page: the trophy isn't the point.</strong> ISEF, the programs below, MMI's own contests — every one of them exists to give you a reason to keep building and a room to show it in. They are not the goal. The actual value was always the project itself — the thing you got curious enough to finish, the bug you chased down at 2am, the question you followed because it mattered to <em>you</em>, not because a judge might like it.</p>
       <p>Competitions are one of the places you can bring that work once it exists. They are not why you should start. Build things that matter to you first — this page just makes sure that when you're ready to show someone, you know exactly where to go, with a clear guideline and real resources built for where you're starting from, not generic advice written for someone else's context.</p>
     </div>
+  </div>
+</section>
+
+<section class="section-alt" id="categories">
+  <div class="wrap">
+    <div class="title-block"><span class="num">00</span><span>Overview</span><span>What's In the Database</span></div>
+    <h2>Eleven categories, built out honestly as we go</h2>
+    <p class="intro">Not everything here is fully built yet — marked clearly either way, so you know what's real today versus what's coming.</p>
+    <div class="dbcat-grid">
+      <div class="dbcat"><h4>Competitions &amp; Fairs</h4><p>ISEF pathways and affiliated fairs across MENA.</p><span class="dbcat-status live">Available</span></div>
+      <div class="dbcat"><h4>Research &amp; Summer Programs</h4><p>International programs with real deadlines below.</p><span class="dbcat-status live">Available</span></div>
+      <div class="dbcat"><h4>Math &amp; Coding Olympiads</h4><p>Entry points, prep resources, timelines.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Scholarships</h4><p>Full-ride and partial scholarships by university.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Universities</h4><p>Searchable by region, funding, and program.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Fellowships</h4><p>Merit-based fellowships for high schoolers.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Internships</h4><p>Research and industry internships open to under-18s.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Grants</h4><p>Small project/travel grants for student researchers.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Conferences</h4><p>Youth science &amp; leadership conferences worldwide.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>Exchange Programs</h4><p>Cultural and academic exchange opportunities.</p><span class="dbcat-status soon">Coming Soon</span></div>
+      <div class="dbcat"><h4>MMI's Own Contests</h4><p>Horizon Challenge and future internal competitions.</p><span class="dbcat-status live">Available</span></div>
+    </div>
+    <div class="verify-note">This page will keep growing as the Research &amp; Resources Lead board seat gets filled and takes ownership of it — see <a href="board.html" style="color:var(--blue);">Board</a>. Every new category gets the same treatment as the ones below: real research, honest gaps, no invented entries.</div>
   </div>
 </section>
 
@@ -188,7 +221,7 @@
 
 <section id="programs">
   <div class="wrap">
-    <div class="title-block"><span class="num">02</span><span>Resource</span><span>Programs &amp; Deadlines</span></div>
+    <div class="title-block"><span class="num">02</span><span>Category</span><span>Research & Summer Programs</span></div>
     <h2>Research programs and camps open to students outside the US</h2>
     <p class="intro">Every program below explicitly accepts international students and lists real deadlines we could verify. Dates shift slightly year to year — always confirm the exact date on the program's own site before you plan around it.</p>
 
@@ -287,6 +320,7 @@
     <div class="f-brand">
       <div class="logo"><span class="logo-mark"></span> MMI</div>
       <p>An independent, open-access initiative teaching hands-on engineering to students across the region, in Arabic and English, from first principles to international science fairs.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);">salmaraies14@gmail.com</a></p>
     </div>
   </div>
   <div class="wrap bottom">
