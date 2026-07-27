@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مبادرة صنّاع الشرق الأوسط MMI — هندسة مفتوحة للمنطقة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* RTL overrides */
+  html[dir="rtl"] body{ font-family:'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif; }
+  html[dir="rtl"] .mono, html[dir="rtl"] .title-block, html[dir="rtl"] .lang-pill, html[dir="rtl"] .lang-pill-bar,
+  html[dir="rtl"] .navlinks a, html[dir="rtl"] .status, html[dir="rtl"] .card .tag, html[dir="rtl"] .hero .eyebrow,
+  html[dir="rtl"] .stat .label, html[dir="rtl"] .rm-label, html[dir="rtl"] .cbox .l, html[dir="rtl"] .badge,
+  html[dir="rtl"] .btn, html[dir="rtl"] .role-card .rn, html[dir="rtl"] footer .f-col h5, html[dir="rtl"] footer .bottom{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  html[dir="rtl"] .title-block span{border-right:none; border-left:1px solid var(--line);}
+  html[dir="rtl"] .title-block span:last-child{border-left:none;}
+  html[dir="rtl"] .roadmap{border-left:none; border-right:2px solid var(--line); padding-left:0; padding-right:22px;}
+  html[dir="rtl"] .rm-item::before{left:auto; right:-27px;}
+  html[dir="rtl"] .learn-note{border-left:none; border-right:3px solid var(--amber);}
+  html[dir="rtl"] .role-card{text-align:right;}
+  html[dir="rtl"] .schematic{right:auto; left:-30px;}
+  html[dir="rtl"] .lc-icon{font-family:'IBM Plex Mono';}
+  html[dir="rtl"] bdi{unicode-bidi:isolate; font-family:'IBM Plex Mono', monospace;}
+  html[dir="rtl"] .stat .num{font-family:'IBM Plex Mono';}
+</style>
+</head>
+<body>
+<div class="bp-bg"></div>
+<div class="lang-bar">
+  <div class="wrap">
+    <span class="lang-pill-bar current">اقرأ بالعربية</span>
+    <span class="sep">·</span>
+    <a href="index.html" class="lang-pill-bar other">Read in English</a>
+  </div>
+</div>
+<nav>
+  <div class="wrap">
+    <a href="index-ar.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> <bdi>MMI</bdi></a>
+    <div class="navlinks">
+      <a href="#vault">الخزانة</a>
+      <a href="playbook.html">الدليل</a>
+      <a href="database.html">قاعدة البيانات</a>
+      <a href="horizon.html">هورايزن</a>
+      <a href="board.html">المجلس</a>
+      <a href="#about">نبذة</a>
+    </div>
+    <button class="nav-toggle" aria-label="القائمة" onclick="this.parentElement.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">مبادرة صنّاع الشرق الأوسط — الرسم رقم <bdi>MMI-001</bdi></div>
+    <h1>امدد يدك<br>نحو المنصات التي لم تكن تعرف<br><em>أنها بانتظارك.</em></h1>
+    <p class="lede">تأسست <bdi>MMI</bdi> لأن العائق لم يكن يومًا الموهبة، بل قلة الاطلاع. مسارات مجانية وثنائية اللغة نحو الهندسة، أولمبياد العلوم، مسابقات البحث العلمي، وفرص جامعية لا يسمع عنها معظم طلاب المنطقة إلا بعد فوات الأوان.</p>
+    <div class="btn-row">
+      <a href="#start-here" class="btn btn-primary">ابدأ من هنا — لا حاجة لخبرة سابقة</a>
+      <a href="#vault" class="btn btn-ghost">تصفّح الخزانة</a>
+    </div>
+  </div>
+  <svg class="schematic" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="150" r="6" fill="#1E6FE0"/>
+    <path d="M150 150 L150 60 L230 60" stroke="#2E6FA8" stroke-width="1.2"/>
+    <path d="M150 150 L60 150 L60 230" stroke="#2E6FA8" stroke-width="1.2"/>
+    <path d="M150 150 L220 220" stroke="#2E6FA8" stroke-width="1.2"/>
+    <rect x="210" y="45" width="30" height="30" stroke="#1E6FE0" stroke-width="1.2"/>
+    <rect x="45" y="215" width="30" height="30" stroke="#1E6FE0" stroke-width="1.2"/>
+    <circle cx="220" cy="220" r="14" stroke="#D98A2B" stroke-width="1.2"/>
+    <path d="M0 40 H300 M0 260 H300" stroke="#DCE7F0" stroke-width="1"/>
+  </svg>
+</header>
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num"><bdi>EN + AR</bdi></div><div class="label">كل مخطط، بلغتين</div></div>
+    <div class="stat"><div class="num">٠٠</div><div class="label">الخبرة اللازمة للبدء</div></div>
+    <div class="stat"><div class="num">٠٤</div><div class="label">مقاعد مجلس شاغرة</div></div>
+  </div>
+</div>
+<section id="about">
+  <div class="wrap">
+    <div class="title-block"><span class="num">00</span><span>نبذة</span><span>الرسالة وخارطة الطريق</span></div>
+    <div class="about-grid">
+      <div>
+        <h2>لماذا وُجدت <bdi>MMI</bdi></h2>
+        <p>شباب المنطقة لا ينقصهم الطموح — تُظهر الاستطلاعات العالمية باستمرار أن المنطقة من بين الأعلى عالميًا في نية وحماس ريادة الأعمال. ما ينقصهم ليس الإمكانات، بل الاطلاع. الطلاب في الأنظمة المصمَّمة لاكتشاف المواهب وتدريبها مبكرًا — مسارات أولمبياد تبدأ من المرحلة الابتدائية، وبرامج بحثية تُعلَن في كل صف دراسي — يكبرون وهم يفترضون أن مكانهم على منصة عالمية أمر بديهي. أما معظم طلاب المنطقة، فلا يدركون أنه "كان بإمكاني فعل ذلك" إلا في سنتهم الدراسية الأخيرة، بعد فوات الأوان.</p>
+        <p>وُجدت <bdi>MMI</bdi> لسدّ هذه الفجوة. بدأت كمصدر هندسي ثنائي اللغة، ولا تزال الخزانة أعمق ما لدينا في هذا المجال حتى اليوم — لكن الرسالة لم تكن يومًا الهندسة فقط. إنها ضمان أن يعرف كل طالب قادر في المنطقة المشهد الكامل لما هو متاح له فعلاً: المسابقات، الأولمبياد، فرص البحث العلمي، والجامعات التي لا يسمع عنها الكثيرون إلا بعد سنوات من فوات الأوان.</p>
+        <p>نحن لسنا شركة ولا نبيع شيئًا — كل ما في هذا الموقع مجاني، بالعربية والإنجليزية معًا، والمجلس الذي يديره طلاب بالكامل.</p>
+      </div>
+      <div>
+        <h3 style="font-size:15px; text-transform:uppercase; letter-spacing:0.05em; color:var(--blue); font-family:'IBM Plex Mono'; margin-bottom:18px;">خارطة الطريق</h3>
+        <div class="roadmap">
+          <div class="rm-item done">
+            <div class="rm-label">المرحلة ١</div>
+            <h4>المنصة وأول المخططات</h4>
+            <p>الموقع أصبح مباشرًا، وافتُتحت خزانة المخططات بأول دليل بناء ثنائي اللغة.</p>
+          </div>
+          <div class="rm-item">
+            <div class="rm-label">المرحلة ٢</div>
+            <h4>تجنيد أعضاء المجلس</h4>
+            <p>أربعة مقاعد تأسيسية في المجلس تُفتح عبر المنطقة — أدوار في البحث، التحقق التقني، التواصل، والعمليات.</p>
+          </div>
+          <div class="rm-item">
+            <div class="rm-label">المرحلة ٣</div>
+            <h4>توسيع الخزانة ودليل القبول</h4>
+            <p>توسيع مكتبة المخططات ونشر دليل <bdi>ISEF</bdi> والقبول الجامعي كاملاً.</p>
+          </div>
+          <div class="rm-item">
+            <div class="rm-label">المرحلة ٤</div>
+            <h4>تحدي هورايزن</h4>
+            <p>هاكاثون إقليمي مدته ٤٨ ساعة، مفتوح لفرق الطلاب في جميع أنحاء الشرق الأوسط وشمال أفريقيا.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="start-here" class="section-alt">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>الأساسيات</span><span>ابدأ من هنا</span></div>
+    <h2>جديد على هذا المجال؟ ابدأ بالأساسيات.</h2>
+    <p class="intro">قبل أن تصبح أدلة البناء في الخزانة مفهومة، هناك بضع أفكار أساسية يجب أن تتضح أولاً. إليك النسخة المختصرة من كل منها — دون افتراض أي خلفية سابقة في الإلكترونيات أو البرمجة.</p>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <div class="lc-head"><div class="lc-icon">؟</div><h3>ما هو المتحكم الدقيق؟</h3></div>
+        <p>المتحكم الدقيق هو حاسوب صغير ورخيص مصمم لمهمة واحدة: قراءة المدخلات (مثل زر أو حساس) والتحكم بالمخرجات (مثل مصباح أو محرك) بناءً على الكود الذي تكتبه. إنه "العقل" وراء تقريبًا كل مشروع عتاد في هذه الخزانة.</p>
+      </div>
+      <div class="learn-card">
+        <div class="lc-head"><div class="lc-icon">▢</div><h3>تعرّف على <bdi>Arduino Uno</bdi></h3></div>
+        <p>لوحة <bdi>Arduino Uno</bdi> هي الأكثر شيوعًا للمبتدئين في العالم — رخيصة، موثّقة جيدًا، وتُستخدم في الغالبية العظمى من المشاريع الهندسية الطلابية. ستكتب الكود لها في برنامج <bdi>Arduino IDE</bdi> المجاني وترفعه عبر كابل <bdi>USB</bdi>.</p>
+      </div>
+      <div class="learn-card">
+        <div class="lc-head"><div class="lc-icon">◉</div><h3>ما هو الحساس؟</h3></div>
+        <p>الحساس يحوّل شيئًا ماديًا — كالمسافة، الحرارة، الضوء، أو الحركة — إلى إشارة كهربائية يمكن للمتحكم الدقيق قراءتها. كل مخطط في الخزانة يتمحور حول توصيل حساس واحد أو أكثر وقراءة بياناته.</p>
+      </div>
+      <div class="learn-card">
+        <div class="lc-head"><div class="lc-icon">▤</div><h3>ما هي لوحة التجارب؟</h3></div>
+        <p>لوحة التجارب هي لوحة قابلة لإعادة الاستخدام لبناء الدارات دون لحام — تُدخل المكوّنات والأسلاك فيها مباشرة. بهذه الطريقة يُختبر كل بناء في هذه الخزانة قبل أن يصبح دائمًا.</p>
+      </div>
+    </div>
+    <div class="learn-note">هذه الأفكار الأربع كافية للبدء بالمخطط <bdi>BP-001</bdi> أدناه. دورة أساسيات كاملة خطوة بخطوة — تتعمق أكثر في كل مفهوم — هي التالية في خارطة الطريق.</div>
+  </div>
+</section>
+<section id="vault">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>وحدة</span><span>الخزانة</span></div>
+    <h2>أدلة كاملة وعملية. مناسبة للمبتدئين. لا حاجة لخبرة سابقة.</h2>
+    <p class="intro">كل مورد في الخزانة يجيب عن سؤال واحد: بعد قراءة هذا، ما الذي يمكنك فعلاً فعله؟ لا ملخصات نظرية ولا ملاحظات كتب مدرسية — بل أدلة كاملة تتضمن قوائم قطع، أمثلة عملية، وخطوات تالية واضحة، بالعربية والإنجليزية معًا. مقسّمة إلى فروع؛ فرعان متاحان اليوم، وخمسة أخرى في خارطة الطريق.</p>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">الهندسة والعتاد</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>BP-001</bdi> · المتحكمات الدقيقة</span>
+        <h3>بنية مصفوفات الحساسات المستقلة</h3>
+        <p>وصّل وبرمج <bdi>Arduino</bdi> لقراءة ثلاثة حساسات في آنٍ واحد — المسافة، الحرارة/الرطوبة، والضوء.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/BP-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>BP-002</bdi> · أنظمة البيانات</span>
+        <h3>تسجيل البيانات البيئية اللحظي ودمج المنطق</h3>
+        <p>التقط، خزّن، وتفاعل مع بيانات الحساسات الحية على عتاد منخفض التكلفة.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/BP-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>BP-003</bdi> · منطق الدارات</span>
+        <h3>مصفوفات البوابات المنطقية في دارات آلية منخفضة التكلفة</h3>
+        <p>ابنِ دارات اتخاذ قرار دون متحكم دقيق، انطلاقًا من المبادئ الأولى.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/BP-003_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BP-003_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">البحث والكتابة العلمية</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>RS-001</bdi> · علم السلوك</span>
+        <h3>دراسة السلوك البشري: دليل تحديد النطاق</h3>
+        <p>صمّم دراسة أخلاقية ومتوافقة مع <bdi>ISEF</bdi> حول كيفية تفكير الناس، اتخاذهم القرار، أو تصرفهم — دون الحاجة لمختبر.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/RS-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>RS-002</bdi> · العلوم البيئية</span>
+        <h3>بحث ميداني بلا مختبر: دليل تحديد النطاق</h3>
+        <p>أجرِ دراسة بيئية أو جيولوجية حقيقية باستخدام مدينتك كموقع ميداني.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/RS-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>RS-003</bdi> · علم البيانات</span>
+        <h3>بحث أصيل من بيانات عامة: دليل تحديد النطاق</h3>
+        <p>اطرح سؤال بحث أصيل وأجب عنه باستخدام مجموعات بيانات موجودة مسبقًا — بتكلفة صفرية.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/RS-003_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/RS-003_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">الرياضيات والأولمبياد</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>MO-001</bdi> · بداية الطريق</span>
+        <h3>بداية الطريق في رياضيات الأولمبياد</h3>
+        <p>اختيار الأولمبياد المناسب، التفكير القائم على البرهان، وخارطة طريق للتحضير طويل المدى.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/MO-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/MO-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>MO-002</bdi> · مسار المسابقات</span>
+        <h3>التنقل عبر سلّم الأولمبياد</h3>
+        <p>كيف تتصاعد المسابقات من المدرسة إلى المستوى الوطني ثم الدولي، وكيف تتقدم في السلّم بعد أن تبدأ التدريب المنتظم. يبني مباشرة على <bdi>MO-001</bdi> — اقرأه أولاً.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/MO-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/MO-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">أولمبياد البرمجة</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>PO-001</bdi> · بداية الطريق</span>
+        <h3>بداية الطريق في البرمجة التنافسية</h3>
+        <p>اختيار منصتك الأولى، تعلّم ‎++C‎، الخوارزميات، وبناء جدول تدريب.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/PO-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/PO-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">الهندسة الطبية الحيوية والصحة</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>BH-001</bdi> · بداية الطريق</span>
+        <h3>اختيار مشروعك الأول في الهندسة الطبية الحيوية</h3>
+        <p>تحديد المشكلات الصحية، مجموعات البيانات الطبية العامة، وبناء نماذج أولية دون مختبر.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/BH-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/BH-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">العلوم البيئية</h3>
+    <div class="grid3" style="margin-bottom:44px;">
+      <div class="card">
+        <span class="tag"><bdi>ES-001</bdi> · بداية الطريق</span>
+        <h3>تصميم مشروعك البحثي البيئي الأول</h3>
+        <p>تحديد المشكلات البيئية، مجموعات البيانات العامة، أساسيات نظم المعلومات الجغرافية، والأساليب الميدانية.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/ES-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/ES-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+    <h3 style="font-size:16px; margin:8px 0 16px; color:var(--blue); font-family:'IBM Plex Mono'; text-transform:uppercase; letter-spacing:0.05em;">البرمجيات والذكاء الاصطناعي</h3>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag"><bdi>SA-001</bdi> · بداية الطريق</span>
+        <h3>بناء أول مشروع ذكاء اصطناعي حقيقي</h3>
+        <p>اختيار فكرة تستحق البناء، <bdi>Git</bdi> و<bdi>GitHub</bdi>، النشر، وتجنّب أخطاء المبتدئين الشائعة.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/SA-001_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/SA-001_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+      <div class="card">
+        <span class="tag"><bdi>SA-002</bdi> · بايثون للبحث</span>
+        <h3>بايثون للبحث العلمي</h3>
+        <p>مهارات بايثون العملية التي تظهر في مشاريع البحث والبيانات الحقيقية، لا في الدروس العامة.</p>
+        <span class="status live">● متاح</span>
+        <div class="lang-row"><a href="blueprints/SA-002_EN.pdf" class="lang-pill on">EN ↓</a><a href="blueprints/SA-002_AR.pdf" class="lang-pill on">AR ↓</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="playbook" class="section-alt">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>وحدة</span><span>دليل <bdi>ISEF</bdi> والقبول الجامعي</span></div>
+    <h2>الآلية البنيوية للقبول — لا نصائح عامة.</h2>
+    <p class="intro">خارطة طريق مبنية على كيفية عمل المسار فعليًا: أي المعارض تؤدي إلى <bdi>ISEF</bdi>، كيف تصوغ مشاريع العتاد كملخصات علمية، وكيف توازن كل ذلك مع امتحانات <bdi>A-Levels</bdi> وطلبات الجامعة.</p>
+    <div class="playbook-list">
+      <a href="playbook.html#pipeline" class="pl-row" style="text-decoration:none; color:inherit;">
+        <div><div class="name">فهرس المسار الإقليمي</div><div class="desc">كل معرض تابع لجمعية <bdi>Society for Science</bdi> تمكنّا من تأكيده في الشرق الأوسط وشمال أفريقيا، مع مسارات التقديم — إضافة إلى الثغرات الصريحة حيثما لم نجد شيئًا.</div></div>
+        <div class="badge" style="color:var(--green); background:#E7F5EE;">متاح</div>
+      </a>
+      <a href="playbook.html#abstract" class="pl-row" style="text-decoration:none; color:inherit;">
+        <div><div class="name">مخطط المشروع</div><div class="desc">تحويل بناء عتادي إلى ملخص ومنهجية ولوحة عرض متوافقة مع <bdi>ISEF</bdi>.</div></div>
+        <div class="badge" style="color:var(--green); background:#E7F5EE;">متاح</div>
+      </a>
+      <a href="playbook.html#timeline" class="pl-row" style="text-decoration:none; color:inherit;">
+        <div><div class="name">الجدول الزمني الموحّد للتكامل</div><div class="desc">موازنة التحضير للامتحانات، الطلبات، والبحث المستقل دون احتراق.</div></div>
+        <div class="badge" style="color:var(--green); background:#E7F5EE;">متاح</div>
+      </a>
+    </div>
+    <p style="margin-top:18px;"><a href="playbook.html" class="btn btn-ghost" style="display:inline-block;">افتح الدليل الكامل ←</a></p>
+  </div>
+</section>
+<section id="horizon">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>وحدة</span><span>تحدي هورايزن</span></div>
+    <div class="horizon">
+      <div class="horizon-grid">
+        <div>
+          <h2 style="margin-bottom:16px;">تحدٍ هندسي افتراضي دولي مدته ٤٨ ساعة.</h2>
+          <p style="color:var(--ink-soft); margin-bottom:24px; max-width:480px;">تصمّم فرق الطلاب نموذجًا أوليًا ماديًا، محاكاة، أو فكرة هندسية تحل مشكلة واقعية — يُحكم عليها بناءً على التفكير الهندسي، الإبداع، والأثر الواقعي. مفتوح لطلاب المدارس الثانوية حول العالم، من عمر ١٣ فما فوق.</p>
+          <a href="horizon.html" class="btn btn-primary">شاهد التفاصيل الكاملة ←</a>
+        </div>
+        <div class="countdown">
+          <div class="cbox"><div class="n"><bdi>Aug 14–16</bdi></div><div class="l">٢٠٢٦</div></div>
+          <div class="cbox"><div class="n">≤٣</div><div class="l">حجم الفريق</div></div>
+          <div class="cbox"><div class="n"><bdi>Aug 12</bdi></div><div class="l">آخر موعد للتسجيل</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="board" class="section-alt">
+  <div class="wrap">
+    <div class="title-block"><span class="num">05</span><span>فريق</span><span>المجلس التشغيلي</span></div>
+    <h2>أربعة مقاعد. رسالة واحدة.</h2>
+    <p class="intro">هذه مناصب قيادية تأسيسية. كل عضو في المجلس يمتلك وظيفة أساسية في <bdi>MMI</bdi>، وله استقلالية في تطويرها، ويعمل عن قرب مع بقية المجلس لتشكيل نمو المنظمة. مع توسّع <bdi>MMI</bdi>، سيقوم أعضاء المجلس بتجنيد وتوجيه وقيادة متطوعين أو متدربين ضمن مجالهم — لبناء فرق تضاعف أثر <bdi>MMI</bdi> في المنطقة.</p>
+    <div class="board-grid">
+      <div class="role-card">
+        <div class="rn">مقعد ٠١</div>
+        <h4>قائد البحث والموارد</h4>
+        <p>يمتلك منظومة الموارد التعليمية في <bdi>MMI</bdi> — يبحث عن الفرص والبرامج، يحافظ على فهرس المسار الإقليمي، ويضمن دقة كل مورد وحداثته.</p>
+      </div>
+      <div class="role-card">
+        <div class="rn">مقعد ٠٢</div>
+        <h4>القائد التقني للغة العربية</h4>
+        <p>آخر مرحلة تدقيق تقني في <bdi>MMI</bdi> — يتحقق من الدقة الهندسية والمصطلحات التقنية العربية في كل مخطط قبل نشره.</p>
+      </div>
+      <div class="role-card">
+        <div class="rn">مقعد ٠٣</div>
+        <h4>مدير التسويق والتواصل</h4>
+        <p>يدير الحضور العام لـ <bdi>MMI</bdi> — وسائل التواصل الاجتماعي، الشراكات، والتواصل مع المدارس ومجتمعات <bdi>STEM</bdi> في المنطقة.</p>
+      </div>
+      <div class="role-card">
+        <div class="rn">مقعد ٠٤</div>
+        <h4>مدير العمليات والمجتمع</h4>
+        <p>يبقي <bdi>MMI</bdi> تعمل خلف الكواليس — التأهيل، تنسيق المتطوعين، تسجيل الفعاليات، ومتابعة المشاريع.</p>
+      </div>
+    </div>
+    <p style="margin-top:22px;"><a href="board.html" class="btn btn-primary" style="display:inline-block;">تقدّم لمقعد في المجلس ←</a></p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> <bdi>MMI</bdi></div>
+      <p>مبادرة مستقلة ومفتوحة الوصول تُعلّم الهندسة العملية لطلاب المنطقة، بالعربية والإنجليزية، من المبادئ الأولى وحتى معارض العلوم الدولية.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);"><bdi>salmaraies14@gmail.com</bdi></a></p>
+    </div>
+    <div class="f-links">
+      <div class="f-col">
+        <h5>تعلّم</h5>
+        <a href="#start-here">ابدأ من هنا</a>
+        <a href="#vault">خزانة المخططات</a>
+        <a href="playbook.html">الدليل</a>
+        <a href="database.html">قاعدة البيانات</a>
+      </div>
+      <div class="f-col">
+        <h5>شارك</h5>
+        <a href="board.html">انضم للمجلس</a>
+        <a href="horizon.html">سجّل فريقًا</a>
+        <a href="#about">عن <bdi>MMI</bdi></a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© ٢٠٢٦ مبادرة صنّاع الشرق الأوسط</span>
+    <span>أسستها وتديرها سلمى</span>
+  </div>
+</footer>
+</body>
+</html>
