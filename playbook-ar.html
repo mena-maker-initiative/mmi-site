@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدليل الإرشادي — مبادرة صنّاع الشرق الأوسط وشمال أفريقيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:      #FFFFFF;
+    --paper:      #F6FAFD;
+    --tint:       #EAF3FA;
+    --ink:        #16283C;
+    --ink-soft:   #3C5872;
+    --slate:      #6C8296;
+    --blue:       #2E6FA8;
+    --blue-bright:#1E6FE0;
+    --amber:      #D98A2B;
+    --green:      #1E8E5A;
+    --red:        #B23B3B;
+    --line:       #DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans Arabic', sans-serif; line-height:1.8; overflow-x:hidden; direction:rtl; text-align:right; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3,.display{font-family:'IBM Plex Sans Arabic', sans-serif; font-weight:700; color:var(--ink);}
+  .ltr{direction:ltr; unicode-bidi:isolate; font-family:'IBM Plex Mono', monospace; display:inline-block;}
+
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--blue); margin-bottom:22px; background:var(--white); direction:ltr; }
+  .title-block span{padding:6px 12px; border-left:1px solid var(--line);}
+  .title-block span:last-child{border-left:none;}
+  .title-block .num{color:var(--amber);}
+
+  .lang-bar{background:var(--ink); color:#fff; text-align:center; padding:9px 0; font-size:13px;}
+  .lang-bar a{color:#fff; text-decoration:none; font-weight:600; padding:0 6px;}
+  .lang-bar a.current{color:var(--amber);}
+  .lang-bar .sep{color:var(--slate);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono'; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none; direction:ltr;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:14px; font-family:'IBM Plex Sans Arabic'; font-weight:500; padding:8px 14px; border:1px solid transparent; transition:all .2s; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:1px solid var(--line); border-radius:4px; padding:9px 10px; cursor:pointer;}
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--ink);}
+  @media(max-width:900px){
+    .navlinks{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--white); border-bottom:1px solid var(--line); padding:10px 0; box-shadow:0 8px 16px rgba(22,40,60,0.08);}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 28px;}
+    .nav-toggle{display:flex;}
+  }
+
+  .hero{padding:70px 0 50px; position:relative;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:12px; margin-bottom:18px; direction:ltr; text-align:right;}
+  .hero h1{font-size:clamp(30px,5vw,46px); line-height:1.3; max-width:760px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:680px;}
+
+  section{padding:64px 0;}
+  section h2{font-size:clamp(22px,3.4vw,30px); margin-bottom:14px;}
+  section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:680px; margin-bottom:36px;}
+  .section-alt{background:var(--paper);}
+
+  .country-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media(max-width:820px){ .country-grid{grid-template-columns:1fr;} }
+  .country-card{border:1px solid var(--line); background:var(--white); border-radius:4px; padding:18px 20px;}
+  .country-card.gap{border-color:var(--amber); background:#FFFCF6;}
+  .country-card.verify{border-color:var(--slate); background:#FAFBFC;}
+  .country-card h4{font-size:15.5px; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; gap:10px;}
+  .conf-tag{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:11px; padding:3px 8px; border-radius:20px; flex-shrink:0; white-space:nowrap;}
+  .conf-tag.confirmed{background:#E7F5EE; color:var(--green);}
+  .conf-tag.check{background:#FBF3E8; color:var(--amber);}
+  .conf-tag.none{background:#F4F7F8; color:var(--slate);}
+  .country-card p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  .verify-note{ margin-top:24px; border-right:3px solid var(--blue); background:var(--tint); padding:14px 18px; font-size:14px; color:var(--ink-soft); }
+
+  .req-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin: 6px 0 30px;}
+  @media(max-width:820px){ .req-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .req-grid{grid-template-columns:1fr;} }
+  .req-chip{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white);}
+  .req-chip .rn{font-family:'IBM Plex Mono'; font-size:19px; color:var(--blue-bright); font-weight:700; direction:ltr;}
+  .req-chip .rl{font-family:'IBM Plex Sans Arabic'; font-size:11px; color:var(--slate); margin-top:2px;}
+  .req-chip h4{font-size:15px; margin-bottom:6px;}
+  .req-chip p{font-size:13px; color:var(--ink-soft); margin-top:8px;}
+
+  .flow{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden; margin-bottom:10px;}
+  .flow-step{display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); background:var(--white);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); font-weight:700; flex-shrink:0; width:24px;}
+  .flow-step h4{font-size:15.5px; margin-bottom:5px;}
+  .flow-step p{font-size:14px; color:var(--ink-soft); margin:0;}
+  .flow-example{font-family:'IBM Plex Mono'; font-size:11px; color:var(--blue); background:var(--tint); padding:6px 10px; margin-top:8px; display:inline-block; border-radius:3px; direction:ltr; text-align:right;}
+
+  .term-grid{display:flex; flex-direction:column; gap:0; border-right:2px solid var(--line); margin-right:8px;}
+  .term{position:relative; padding:0 26px 34px 0;}
+  .term:last-child{padding-bottom:0;}
+  .term::before{content:''; position:absolute; right:-7px; top:3px; width:12px; height:12px; border-radius:50%; background:var(--blue-bright); border:2px solid var(--white); box-shadow:0 0 0 1px var(--blue-bright);}
+  .term .tlabel{font-family:'IBM Plex Mono'; font-size:11px; color:var(--blue); margin-bottom:4px; direction:ltr; text-align:right;}
+  .term h4{font-size:16px; margin-bottom:8px;}
+  .term ul{margin:0 18px 0 0; padding:0;}
+  .term li{font-size:14px; color:var(--ink-soft); margin-bottom:5px;}
+
+  .callout{ border-right:3px solid var(--amber); background:#FBF3E8; padding:18px 22px; margin: 20px 0; }
+  .callout p{ color:#5A3E17; font-size:15px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 20px; font-size: 14px; }
+  th { text-align:right; font-family:'IBM Plex Sans Arabic'; font-size: 13px; color:#fff; background:var(--ink); padding: 8px 12px; font-weight:700; }
+  td { padding: 8px 12px; border-bottom: 0.5px solid var(--line); vertical-align: top; color:var(--ink-soft); }
+  tr:nth-child(even) td { background: var(--paper); }
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13.5px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; direction:ltr;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<div class="lang-bar">
+  <a href="playbook-ar.html" class="current">العربية</a><span class="sep">|</span><a href="playbook.html">Read in English</a>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a href="index-ar.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index-ar.html#vault">الخزنة</a>
+      <a href="playbook-ar.html" class="active">الدليل الإرشادي</a>
+      <a href="database-ar.html">قاعدة الفرص</a>
+      <a href="horizon-ar.html">تحدي الأفق</a>
+      <a href="board-ar.html">المجلس</a>
+      <a href="index-ar.html#about">نبذة عنا</a>
+    </div>
+    <button class="nav-toggle" aria-label="القائمة" onclick="this.parentElement.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;003</div>
+    <h1>الدليل الإرشادي</h1>
+    <p class="lede">دليل استراتيجي حقيقي ومكتمل حول القبول الجامعي، الاختبارات المعيارية، المنح الدراسية، البحث العلمي، الأولمبياد، وكل ما بينها — مكتوب لطلاب المناهج الوطنية والدولية على حد سواء، لا نصائح عامة منسوخة من سياق شخص آخر.</p>
+  </div>
+</header>
+
+<section class="section-alt" style="padding:24px 0;">
+  <div class="wrap">
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <a href="#pipeline" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠١ الفهرس الإقليمي</a>
+      <a href="#admissions" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٢ آلية القبول</a>
+      <a href="#sat" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٣ SAT</a>
+      <a href="#intl-curricula" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٤ A-Levels/IB/AP</a>
+      <a href="#curriculum" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٥ المناهج الوطنية</a>
+      <a href="#scholarships" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٦ المنح الدراسية</a>
+      <a href="#portfolio" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٧ ملف الأعمال</a>
+      <a href="#abstract" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٨ البحث العلمي</a>
+      <a href="#olympiads" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">٠٩ الأولمبياد</a>
+      <a href="#internships" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">١٠ التدريب</a>
+      <a href="#recs" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">١١ خطابات التوصية</a>
+      <a href="#essays" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">١٢ المقالات</a>
+      <a href="#interviews" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">١٣ المقابلات</a>
+      <a href="#timeline" style="font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); text-decoration:none; border:1px solid var(--line); padding:6px 12px; border-radius:20px;">١٤ الجدول الزمني</a>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Resource</span><span>REGIONAL PIPELINE INDEX</span></div>
+    <h2>أين يوجد مسار <span class="ltr">ISEF</span> فعليًا في بلدك</h2>
+    <p class="intro">بحثنا هذا مباشرة، لا افتراضًا. كل عنصر أدناه موسوم بمدى ثقتنا به — مسارات مؤكدة وجدنا لها أدلة حالية، أخرى تحتاج تحققًا مباشرًا لأن مصادرنا كانت قديمة، وفجوات حقيقية لم نجد فيها شيئًا. دليل <strong><span class="ltr">Find-a-Fair</span></strong> الرسمي من <span class="ltr">Society for Science</span> هو الكلمة الفصل دائمًا.</p>
+
+    <div class="country-grid">
+      <div class="country-card">
+        <h4>مصر <span class="conf-tag confirmed">مؤكد</span></h4>
+        <p><strong><span class="ltr">ISEF Egypt</span></strong> (تديرها المؤسسة العربية للعلوم والتكنولوجيا) هي المسار الرسمي المعتمد من <span class="ltr">Society for Science</span>. <strong><span class="ltr">EISTF</span></strong> معرض ثانٍ منفصل مقره القاهرة ومفتوح على مستوى الجمهورية — يستحق دخول كليهما.</p>
+      </div>
+      <div class="country-card">
+        <h4>السعودية <span class="conf-tag confirmed">مؤكد</span></h4>
+        <p><strong>معرض موهبة للعلوم والهندسة</strong>، الذي تديره مؤسسة الملك عبدالعزيز ورجاله للموهبة والإبداع، أرسل متأهلين إلى <span class="ltr">Regeneron ISEF 2026</span> — مسار نشط وحالي.</p>
+      </div>
+      <div class="country-card">
+        <h4>الأردن <span class="conf-tag confirmed">مؤكد</span></h4>
+        <p><strong>معرض العلوم التابع لوزارة التربية والتعليم الأردنية</strong> أرسل متأهلين إلى <span class="ltr">Regeneron ISEF 2026</span>. معرض وطني منفصل تدعمه مؤسسة عبد الحميد شومان أسهم تاريخيًا أيضًا في التغذية نحو <span class="ltr">ISEF</span>.</p>
+      </div>
+      <div class="country-card verify">
+        <h4>الإمارات العربية المتحدة <span class="conf-tag check">تحقق مباشرة</span></h4>
+        <p>برنامج <strong><span class="ltr">Think Science</span></strong> (مؤسسة الإمارات) كان تاريخيًا مسارًا نحو <span class="ltr">ISEF</span>، لكن أحدث تأكيد لدينا يعود لعدة سنوات. دبي أيضًا تدير معرضها الخاص (<span class="ltr">DSEF</span>) — حالة الاعتماد غير مؤكدة. تحقق من <span class="ltr">Find-a-Fair</span> قبل الاعتماد على أي منهما.</p>
+      </div>
+      <div class="country-card gap">
+        <h4>البحرين <span class="conf-tag none">لم نجد معرضًا</span></h4>
+        <p>لم نتمكن من تأكيد وجود معرض معتمد من <span class="ltr">Society for Science</span> مقره البحرين. إذا كنت هناك، توجّه مباشرة إلى <span class="ltr">Find-a-Fair</span> على <span class="ltr">societyforscience.org</span> — الاعتمادات تُفتح وتتغير، وهذه فجوة حقيقية في المسار الإقليمي.</p>
+      </div>
+      <div class="country-card gap">
+        <h4>الكويت، لبنان، المغرب، تونس، عُمان، قطر <span class="conf-tag none">لم يُبحث بعد</span></h4>
+        <p>لم نجد في هذه الجولة أدلة موثوقة وحالية على مسارات نشطة لهذه الدول. هذا لا يعني عدم وجود شيء — بل يعني التحقق من <span class="ltr">Find-a-Fair</span> مباشرة بدلًا من الوثوق بغياب من هذه القائمة.</p>
+      </div>
+    </div>
+
+    <div class="verify-note">سينمو هذا الفهرس مع شغل منصب مسؤول البحث والموارد في <span class="ltr">MMI</span> — راجع قسم <a href="index-ar.html#board" style="color:var(--blue);">المجلس</a>. حاليًا، تعامل مع كل عنصر هنا كخيط يحتاج تحققًا، لا كإجابة نهائية، وتحقق دائمًا من الدليل الرسمي لـ <span class="ltr">Society for Science</span> قبل بناء جدول زمني حوله.</div>
+  </div>
+</section>
+
+<section id="admissions">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Guide</span><span>UNIVERSITY ADMISSIONS 101</span></div>
+    <h2>كيف تعمل الطلبات فعليًا، نظامًا بنظام</h2>
+    <p class="intro">تقريبًا كل نظام تقديم جامعي في العالم يندرج تحت فلسفتين. معرفة أيهما تستخدمه جامعتك المستهدفة يغيّر أين يجب أن تستثمر وقتك فعليًا.</p>
+    <div class="req-grid">
+      <div class="req-chip"><h4>أنظمة قائمة على الدرجات</h4><p>بريطانيا (<span class="ltr">UCAS</span>)، ومعظم أوروبا، ومعظم أنظمة التقديم المباشر، تعطي وزنًا كبيرًا للدرجات والدرجات المتوقعة، مع بيان شخصي واحد وأحيانًا اختبار قبول أو مقابلة. الأنشطة اللامنهجية أقل أهمية بكثير مما يفترض معظم الطلاب.</p></div>
+      <div class="req-chip"><h4>أنظمة شمولية</h4><p>جامعات أمريكا (<span class="ltr">Common App</span>) تزن الدرجات والاختبارات والمقالات وخطابات التوصية وعمق الأنشطة اللامنهجية معًا — لا عامل واحد يهيمن، ولهذا يمكن لنفس الطالب أن يُرفض من مدرسة ويُقبل في أخرى "أصعب".</p></div>
+      <div class="req-chip"><h4>أنظمة التقديم المباشر</h4><p>كثير من جامعات الخليج وآسيا وبعض أوروبا تقبل مباشرة بناءً على الدرجات/نتائج الاختبارات بأقل عنصر مقالي أو بدونه — تحقق من بوابة كل جامعة مستهدفة بدلًا من افتراض عملية شبيهة بـ <span class="ltr">UCAS/Common App</span>.</p></div>
+    </div>
+    <table>
+      <tr><th>النظام</th><th>تستخدمه</th><th>الأهم فيه</th></tr>
+      <tr><td class="ltr" style="text-align:right;">UCAS</td><td>الجامعات البريطانية</td><td>الدرجات المتوقعة، بيان شخصي واحد (مشترك لكل خيارات التخصص)، أحيانًا اختبار قبول</td></tr>
+      <tr><td class="ltr" style="text-align:right;">Common App</td><td>معظم الجامعات الأمريكية</td><td>الدرجات، المقالات (رئيسية + تكميلية لكل مدرسة)، خطابات التوصية، الأنشطة، أحيانًا نتائج الاختبارات</td></tr>
+      <tr><td>بوابات التقديم المباشر</td><td>تختلف كثيرًا — تحقق من كل جامعة</td><td>عادة الدرجات/نتائج الاختبارات أولًا؛ المتطلبات متنوعة بما يكفي لعدم وجود قاعدة واحدة</td></tr>
+    </table>
+    <div class="callout"><p><strong>الخلاصة العملية:</strong> اكتشف أي نظام (أو أنظمة) تستخدمه جامعاتك المستهدفة فعليًا قبل أن تقرر أين تستثمر وقتك — مقال <span class="ltr">Common App</span> رائع مجهود ضائع إذا كانت كل مدرسة في قائمتك تستخدم <span class="ltr">UCAS</span>.</p></div>
+  </div>
+</section>
+
+<section class="section-alt" id="sat">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Guide</span><span>STANDARDIZED TESTING — THE SAT</span></div>
+    <h2>ما هو فعليًا، وكيف تستعد له مجانًا</h2>
+    <p class="intro">أصبح اختبار <span class="ltr">SAT</span> رقميًا بالكامل في السنوات الأخيرة — الصيغة أدناه تعكس <span class="ltr">Digital SAT</span> الحالي، لا النسخة الورقية القديمة التي ما زالت أدلة كثيرة قديمة تصفها.</p>
+    <div class="req-grid">
+      <div class="req-chip"><h4>الصيغة</h4><p>قسمان — القراءة والكتابة (٦٤ دقيقة، وحدتان من ٣٢ دقيقة) والرياضيات (٧٠ دقيقة، وحدتان من ٣٥ دقيقة). حوالي ساعتين و٢٤ دقيقة إجمالًا، شاملة الاستراحات.</p></div>
+      <div class="req-chip"><h4>التقييم</h4><p>من ٤٠٠ إلى ١٦٠٠ إجمالًا، بدرجتي قسم من ٢٠٠ إلى ٨٠٠ لكل منهما. الوحدة الثانية في كل قسم تتكيّف صعوبتها بناءً على أدائك في الوحدة الأولى.</p></div>
+      <div class="req-chip"><h4>من يحتاجه فعليًا</h4><p>مهم أساسًا للمتقدمين لجامعات أمريكية — كثير من الجامعات البريطانية وأنظمة التقديم المباشر لا تطلبه. تحقق من كل جامعة مستهدفة قبل افتراض أنك بحاجته.</p></div>
+    </div>
+    <h3 style="font-size:16px; margin:30px 0 12px;">تحضير مجاني وكافٍ فعليًا</h3>
+    <p style="color:var(--ink-soft); font-size:14.5px; margin-bottom:16px;">شراكة <span class="ltr">College Board</span> الرسمية مع <span class="ltr">Khan Academy</span> تعني أن التحضير المجاني لم يعد الخيار الأضعف كما كان — طالب ملتزم يمكنه الوصول لنتيجة قوية دون دفع أي شيء.</p>
+    <table>
+      <tr><th>المصدر</th><th>الغرض منه</th><th>الرابط</th></tr>
+      <tr><td><span class="ltr">Bluebook</span> (تطبيق <span class="ltr">College Board</span> الرسمي)</td><td>اختبارات تدريبية تكيّفية رسمية كاملة — أقرب محاكاة للاختبار الحقيقي</td><td><span class="ltr" style="direction:ltr; display:inline-block;">collegeboard.org/digital/bluebook</span></td></tr>
+      <tr><td>تحضير <span class="ltr">SAT</span> الرسمي على <span class="ltr">Khan Academy</span></td><td>تدريب مهارات شخصي ومجاني متوافق مباشرة مع محتوى <span class="ltr">College Board</span></td><td><span class="ltr" style="direction:ltr; display:inline-block;">khanacademy.org/sat</span></td></tr>
+    </table>
+    <div class="callout"><p><strong>خطة واقعية:</strong> اربط حسابك في <span class="ltr">Khan Academy</span> بـ <span class="ltr">College Board</span>، أجرِ اختبار <span class="ltr">Bluebook</span> تشخيصيًا أولًا لتحديد نقاط ضعفك، ثم بدّل بين تدريب <span class="ltr">Khan Academy</span> المستهدف و٣ إلى ٥ اختبارات <span class="ltr">Bluebook</span> كاملة في الشهر قبل موعد اختبارك الحقيقي. سجّل مبكرًا — مراكز الاختبار الدولية (ذات صلة عبر البحرين ومصر والمنطقة الأوسع) تمتلئ ولا تتوفر في كل مكان.</p></div>
+  </div>
+</section>
+
+<section id="intl-curricula">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>Guide</span><span>INTERNATIONAL CURRICULA</span></div>
+    <h2>كيف يُستخدم كل منهج فعليًا في الطلبات</h2>
+    <div class="req-grid">
+      <div class="req-chip"><h4><span class="ltr">A-Levels</span></h4><p>عادة ٣–٤ مواد. طلبات <span class="ltr">UCAS</span> تعمل بـ<strong>درجات متوقعة</strong> تُرسل قبل الامتحانات النهائية — العروض عادة مشروطة بتحقيقها في النتائج الحقيقية.</p></div>
+      <div class="req-chip"><h4>دبلوم <span class="ltr">IB</span></h4><p>من ٤٥ درجة. تُستخدم الدرجات المتوقعة بنفس طريقة توقعات <span class="ltr">A-Level</span> — تُرسل قبل النهائيات، والعروض مشروطة بتحقيقها.</p></div>
+      <div class="req-chip"><h4><span class="ltr">AP</span></h4><p>امتحانات مواد فردية (١–٥ لكل منها)، وليست دبلومًا كاملًا بحد ذاتها — عادة تُقرن بمنهج آخر. تدل على قوة في المادة وأحيانًا تمنح ساعات جامعية مباشرة.</p></div>
+    </div>
+    <div class="callout"><p><strong>فخ الدرجات المتوقعة:</strong> الدرجات المتوقعة تحددها مدرستك، لا أنت — ابدأ الحديث مع معلميك مبكرًا حول ما يُرجّح أن يتوقعوه، لأنه يشكّل مباشرة أي الجامعات واقعية للتقديم إليها.</p></div>
+  </div>
+</section>
+
+<section class="section-alt" id="curriculum">
+  <div class="wrap">
+    <div class="title-block"><span class="num">05</span><span>Guide</span><span>NATIONAL CURRICULA</span></div>
+    <h2>الثانوية العامة، التوجيهي، والطلبات الدولية</h2>
+    <p class="intro">معظم الإرشادات على الإنترنت مكتوبة افتراضيًا لطلاب <span class="ltr">A-Level</span> أو <span class="ltr">IB</span> أو <span class="ltr">AP</span>. إذا كنت على منهج وطني، إليك ما يختلف فعليًا — وما لا يختلف.</p>
+    <div class="req-grid">
+      <div class="req-chip"><h4>ما هو مطلوب</h4><p>أنظمة بريطانيا (<span class="ltr">UCAS</span>) وأمريكا (<span class="ltr">Common App</span>) تقبل كشوف الثانوية العامة والتوجيهي مباشرة — المطلوب القياسي هو <strong>ترجمة إنجليزية معتمدة كلمة بكلمة</strong> لكشفك الرسمي، لا امتحان معادلة منفصل.</p></div>
+      <div class="req-chip"><h4>مشكلة التوقيت الحقيقية</h4><p>نتائج الثانوية العامة تُعلن متأخرة جدًا مقارنة بموعد قرارات القبول في بريطانيا/أمريكا — خطط لهذا صراحة مع مرشدك المدرسي بدلًا من اكتشافه في موسم التقديم.</p></div>
+      <div class="req-chip"><h4>نفس المواعيد النهائية تنطبق</h4><p>مواعيد <span class="ltr">UCAS</span> و<span class="ltr">Common App</span> لا تتغير لطلاب المناهج الوطنية — أنت على نفس التقويم تمامًا كطلاب <span class="ltr">A-Level/IB</span> (راجع قسم الجدول الزمني)، فقط بصيغة كشف مختلفة.</p></div>
+    </div>
+    <div class="callout" style="margin-top:6px;"><p><strong>ابدأ الترجمة مبكرًا.</strong> الترجمة المعتمدة قد تستغرق وقتًا حقيقيًا لترتيبها عبر مدرستك أو مترجم معتمد — هذه هي الخطوة التي تفاجئ طلاب المناهج الوطنية أكثر من غيرها، لأنها مشكلة لوجستية، لا أكاديمية. نفس المنطق ينطبق على البكالوريا اللبنانية، والمناهج الهندية <span class="ltr">CBSE/ISC</span>، ومعظم المناهج الوطنية الأخرى — ترجمة معتمدة، لا امتحان تحويل، هي عادة المطلوب الفعلي للتقديم للخارج.</p></div>
+  </div>
+</section>
+
+<section id="scholarships">
+  <div class="wrap">
+    <div class="title-block"><span class="num">06</span><span>Guide</span><span>SCHOLARSHIPS STRATEGY</span></div>
+    <h2>إيجاد التمويل عملية منفصلة عن القبول</h2>
+    <p class="intro">القبول والتمويل غالبًا ما يُقرران عبر عمليتين منفصلتين تمامًا، أحيانًا بمواعيد مختلفة — التعامل معهما كخطوة واحدة هو الخطأ الأكثر شيوعًا في المنح الدراسية.</p>
+    <div class="req-grid">
+      <div class="req-chip"><h4>على أساس الجدارة</h4><p>تُمنح للتفوق الأكاديمي أو الموهبة، غالبًا عبر الجامعة نفسها أو مسابقات خارجية — عادة لا تحتاج أوراقًا مالية منفصلة.</p></div>
+      <div class="req-chip"><h4>على أساس الحاجة المالية</h4><p>تُمنح بناءً على الظروف المالية، وعادة تتطلب توثيقًا ماليًا منفصلًا (مثل <span class="ltr">CSS Profile</span> لكثير من الجامعات الأمريكية) — المساعدات الدولية تختلف كثيرًا حسب المدرسة.</p></div>
+      <div class="req-chip"><h4>خارجية/خاصة</h4><p>تُمنح من مؤسسات أو حكومات أو منظمات مستقلة عن أي جامعة — غالبًا المصدر الأكثر إغفالًا لأنها تتطلب بحثًا منفصلًا خاصًا بها.</p></div>
+    </div>
+    <div class="callout"><p><strong>أين تجد القوائم فعليًا:</strong> <a href="database-ar.html" style="color:var(--blue);">قاعدة الفرص</a> هي حيث تعيش عناصر المنح والتمويل الجامعي الحقيقية أثناء بحثها والتحقق منها — هذا القسم يغطي الاستراتيجية، لا قائمة، لتجنب التكرار (وخطر التناقض) مع تلك الصفحة.</p></div>
+    <div class="callout" style="border-right-color:var(--blue); background:var(--tint);"><p><strong>قاعدتان عمليتان:</strong> مواعيد المنح أحيانًا <em>أبكر</em> من موعد القبول نفسه — لا تفترض أبدًا أنهما متطابقان. والقبول لا يعني التمويل — "مقبول" و"ممول" قراران منفصلان في معظم الجامعات.</p></div>
+  </div>
+</section>
+
+<section class="section-alt" id="portfolio">
+  <div class="wrap">
+    <div class="title-block"><span class="num">07</span><span>Guide</span><span>BUILDING YOUR PORTFOLIO</span></div>
+    <h2>العمق في أشياء قليلة أفضل من السطحية في كثير</h2>
+    <p class="intro">ملف الأعمال ليس سيرة ذاتية بخطوات إضافية — إنه دليل. كل مشروع تنجزه من الخزنة هو لبنة بناء طبيعية له.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>وثّق أثناء البناء، لا بعده</h4><p>صور بناء <span class="ltr">BP-001</span> في منتصف التجميع، بيانات <span class="ltr">RS-002</span> الميدانية أثناء جمعها، عملية حل المشكلات في <span class="ltr">MO-001</span> — الدليل المُجمّع في اللحظة أكثر إقناعًا بكثير من إعادة بناء تُكتب بعد أسابيع.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>اختر ٢–٣ مشاريع للتعمق فيها</h4><p>ملف أعمال يسرد عشرة أشياء سطحية يبدو أسوأ من واحد يعرض ثلاثة أشياء يمكنك الحديث عنها لعشرين دقيقة لكل منها. العمق هو الإشارة التي يبحث عنها قارئو طلبات القبول فعليًا.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>ضع الكود والتقارير في مكان دائم</h4><p>مستودع <span class="ltr">GitHub</span> لأي عمل برمجي/بياناتي، وتقرير قصير (المشكلة، النهج، النتيجة، ما كنت لتفعله بشكل مختلف) لكل مشروع — القسم ١٢ يغطي كتابة هذه جيدًا.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="abstract">
+  <div class="wrap">
+    <div class="title-block"><span class="num">08</span><span>Guide</span><span>RESEARCH &amp; ABSTRACTS</span></div>
+    <h2>تحويل مشروع عتاد إلى تقديم متوافق مع <span class="ltr">ISEF</span></h2>
+    <p class="intro">مخطط منجز من الخزنة هو بناء عامل، وليس مشروعًا بحثيًا بعد. إليك بالضبط ما يتطلبه <span class="ltr">ISEF</span>، مستمدًا من القواعد الرسمية — والخطوات الفعلية للانتقال من "بنيت مصفوفة استشعار" إلى تقديم يستوفيها جميعًا.</p>
+
+    <div class="req-grid">
+      <div class="req-chip"><div class="rn">250</div><div class="rl">حد كلمات الملخص</div><p>صفحة واحدة، على نموذج ملخص <span class="ltr">ISEF</span> الرسمي، تصف عمل الطالب فقط.</p></div>
+      <div class="req-chip"><div class="rn">240×122×76</div><div class="rl">أقصى حجم للوحة (سم)</div><p>ارتفاع × عرض × عمق — تأكد من معرضك المعتمد تحديدًا، فبعضها يختلف قليلًا عن معيار <span class="ltr">ISEF</span>.</p></div>
+      <div class="req-chip"><div class="rn">12</div><div class="rl">أقصى شهور بحث</div><p>نافذة بحث متواصلة — لا يمكن دمج عمل من سنوات غير مترابطة في تقديم واحد.</p></div>
+    </div>
+
+    <div class="callout"><p><strong>مطلوب أيضًا:</strong> نموذج القائمة المرجعية ١، قائمة الطالب المرجعية ١A، ونموذج خطة البحث والموافقة ١B لكل مشروع — بالإضافة لنموذج ١C إذا جرى أي عمل خارج المنزل أو المدرسة أو الميدان. كل رسم على لوحتك (صور، رسوم بيانية) يحتاج توثيقًا فرديًا — عبارة عامة "كل الرسوم من الطالب" لم تعد مقبولة. يجب أن تكون كل المواد بالإنجليزية.</p></div>
+
+    <h3 style="font-size:17px; margin-bottom:16px;">من بناء منجز إلى تقديم بحثي</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>ابحث عن السؤال الحقيقي داخل البناء</h4><p>المخطط يثبت أن تقنية تعمل. المشروع البحثي يطرح سؤالًا يمكن للتقنية الإجابة عنه. السؤال يظهر عادة لحظة أن تسأل "ماذا يمكنني قياسه بهذا، ولا أعرف إجابته مسبقًا؟"</p>
+        <div class="flow-example">BP-001 → "هل يتنبأ تباين رطوبة الدفيئة بإجهاد النبات في اليوم التالي أفضل من الحرارة وحدها؟"</div></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>حدد متغيراتك قبل أن تبني أكثر</h4><p>ماذا تُغيّر (المتغير المستقل)، ماذا تقيس (المتغير التابع)، وماذا تُبقي ثابتًا (الضوابط)؟ اكتب هذا قبل جمع البيانات — المحكّمون يبحثون عن هذا تحديدًا.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>اجمع البيانات عبر وقت حقيقي، لا بعد ظهر واحد</h4><p>هذا بالضبط ما صُمم له تسجيل <span class="ltr">SD</span> وتوقيت <span class="ltr">RTC</span> في <span class="ltr">BP-002</span> — قراءة واحدة حكاية، ومجموعة بيانات مسجلة عبر أيام أو أسابيع دليل.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div><h4>اكتب الملخص أخيرًا، لا أولًا</h4><p>بيان المشكلة (١–٢ جملة)، المنهجية (٢–٣ جمل)، النتائج الرئيسية (٢–٣ جمل)، الخلاصة (١–٢ جملة). كل هذا تحت ٢٥٠ كلمة، يصف ما وجدته فعليًا — لا ما كنت تأمل إيجاده.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div><h4>صمم اللوحة حول بياناتك، لا بنائك</h4><p>المحكّمون يقضون وقتًا في قسم النتائج أكثر من صور العتاد. ابدأ بالرسم البياني أو النتيجة التي تجيب سؤالك؛ البناء نفسه دليل داعم، لا العنوان الرئيسي.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="olympiads">
+  <div class="wrap">
+    <div class="title-block"><span class="num">09</span><span>Guide</span><span>OLYMPIADS</span></div>
+    <h2>لماذا تهم الأولمبياد، وكيف تبدأ</h2>
+    <p class="intro">نتائج الأولمبياد من أوضح الإشارات المفهومة دوليًا في أي طلب — ميدالية أولمبياد رياضيات أو برمجة تعني نفس الشيء لقارئ طلبات القبول في لندن كما تعنيه في القاهرة.</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>ابدأ محليًا، لا دوليًا</h4><p>المسابقات المدرسية والوطنية تبني المهارات المحددة (كتابة البرهان، سرعة البرمجة التنافسية) التي تفترض الأولمبياد الدولية أنك تملكها مسبقًا. القفز مباشرة لتحضير بمستوى <span class="ltr">IMO</span> دون هذا الأساس عادة يأتي بنتيجة عكسية.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>اختر مسارًا والتزم به</h4><p>أولمبياد الرياضيات والبرمجة يكافئان التحضير المستمر متعدد السنوات أكثر بكثير من الموهبة العامة — الطلاب الذين يفوزون بميداليات بدأوا دائمًا تقريبًا قبل ٢–٣ سنوات من نتيجتهم.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>استخدم الخزنة للبدء</h4><p><span class="ltr">MO-001</span> (الخطوات الأولى في أولمبياد الرياضيات) و<span class="ltr">PO-001</span> (الخطوات الأولى في البرمجة التنافسية) في الخزنة يغطيان اختيار مسابقتك المحددة وبناء خطة تدريب واقعية.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="internships">
+  <div class="wrap">
+    <div class="title-block"><span class="num">10</span><span>Guide</span><span>INTERNSHIPS &amp; COLD EMAILING</span></div>
+    <h2>الحصول على "نعم" ممن لا يعرفك بعد</h2>
+    <p class="intro">أغلب فرص البحث والصناعة القيّمة لمن هم دون ١٨ عامًا غير معلنة — تأتي من شخص يوافق على بريد إلكتروني بارد. هذه مهارة يمكن تعلمها.</p>
+    <div class="req-grid">
+      <div class="req-chip"><h4>اجعله قصيرًا</h4><p>البريد الإلكتروني البارد الذي سيقرأه أستاذ أو محترف فعليًا هو ٥–٧ جمل، لا خطاب تقديمي كامل — صل إلى الطلب المحدد بسرعة.</p></div>
+      <div class="req-chip"><h4>كن محددًا</h4><p>"أود التعلم منك" تُتجاهل. "قرأت ورقتك عن X ولدي سؤال محدد حول Y" تحصل على رد.</p></div>
+      <div class="req-chip"><h4>توقع معدل استجابة منخفض</h4><p>معظم الرسائل لن تحصل على رد — هذا طبيعي، وليس علامة على أنك أخطأت. الكمية والتحديد أهم من أن تكون رسالة واحدة مثالية.</p></div>
+    </div>
+    <div class="callout"><p><strong>تابع مرة واحدة، بأدب،</strong> بعد حوالي أسبوع من الرسالة الأولى إذا لم تسمع ردًا — ثم انتقل لغيره. متابعة مهذبة واحدة متوقعة؛ أكثر من ذلك تُقرأ كضغط، لا مثابرة.</p></div>
+  </div>
+</section>
+
+<section class="section-alt" id="recs">
+  <div class="wrap">
+    <div class="title-block"><span class="num">11</span><span>Guide</span><span>RECOMMENDATION LETTERS</span></div>
+    <h2>من تسأل، وكيف تجعل كتابة خطابهم جيدة وسهلة</h2>
+    <div class="req-grid">
+      <div class="req-chip"><h4>من تسأل</h4><p>معلم يعرف عملك الفعلي جيدًا أفضل من اسم أكبر بالكاد يعرفك — التحديد في الخطاب هو ما يجعله قويًا.</p></div>
+      <div class="req-chip"><h4>ماذا تعطيهم</h4><p>وثيقة قصيرة بمشاريعك الرئيسية وإنجازاتك وما تريد إبرازه — من يكتبون التوصيات يكتبون خطابات أقوى حين لا يضطرون لإعادة بناء عملك من الذاكرة.</p></div>
+      <div class="req-chip"><h4>متى تسأل</h4><p>قبل الموعد النهائي بـ٤–٦ أسابيع على الأقل — من يكتبون توصيات ممتازة يُطلب منهم غالبًا من طلاب متعددين، والخطابات المتسرعة تُقرأ كذلك.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="essays">
+  <div class="wrap">
+    <div class="title-block"><span class="num">12</span><span>Guide</span><span>ESSAYS &amp; PERSONAL STATEMENTS</span></div>
+    <h2>البنية والصوت، لا القوالب الجاهزة</h2>
+    <div class="req-grid">
+      <div class="req-chip"><h4>بيان <span class="ltr">UCAS</span> الشخصي</h4><p>مقال واحد مشترك لكل خيارات التخصص — ركّز على اهتمام حقيقي بالمادة والتوافق معها، لا قصة حياة غير مرتبطة بالتخصص.</p></div>
+      <div class="req-chip"><h4>مقال <span class="ltr">Common App</span></h4><p>مقال شخصي رئيسي واحد بالإضافة لمقالات تكميلية لكل مدرسة — المقال الرئيسي سردي وشخصي؛ التكميلية يجب أن تجيب سؤال المدرسة المحدد فعليًا.</p></div>
+      <div class="req-chip"><h4>الخطأ الأكثر شيوعًا</h4><p>كتابة ما تظن أن قارئي القبول يريدون سماعه، بدلًا مما هو حقيقي ومحدد بك — لغة "الشغف" العامة تُعرف فورًا وتُنسى بسرعة.</p></div>
+    </div>
+    <div class="callout"><p><strong>ابدأ من لحظة حقيقية، لا فكرة عامة.</strong> المقالات المبنية حول لحظة محددة وملموسة (تجربة فاشلة، محادثة حقيقية) تُقرأ باستمرار أقوى من المقالات المبنية حول صفة مجردة تحاول إظهارها.</p></div>
+  </div>
+</section>
+
+<section class="section-alt" id="interviews">
+  <div class="wrap">
+    <div class="title-block"><span class="num">13</span><span>Guide</span><span>INTERVIEWS</span></div>
+    <h2>اعرف طلبك أفضل من أي شخص آخر في الغرفة</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>أعد قراءة طلبك أولًا</h4><p>القائمون بالمقابلة يسألون كثيرًا مباشرة عن شيء كتبته — عدم القدرة على التوسع في مقالك الخاص لحظة سيئة يمكن تجنبها.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>تدرّب على شرح مشاريعك ببساطة</h4><p>المقابلات الأكاديمية (بأسلوب <span class="ltr">Oxbridge</span>) تختبر كيف تفكر عبر مشكلة مباشرة، لا فقط ما تعرفه مسبقًا — تدرّب على التفكير بصوت عالٍ، لا فقط تلاوة الحقائق.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>حضّر أسئلة حقيقية لتسألها</h4><p>لحظة "لا أسئلة" العامة في النهاية فرصة ضائعة — سؤال واحد محدد ومدروس جيدًا يُظهر اهتمامًا حقيقيًا أفضل من أي شيء آخر في المقابلة.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="title-block"><span class="num">14</span><span>Guide</span><span>APPLICATION TIMELINE</span></div>
+    <h2>ملاءمة كل هذا حول الامتحانات، لا بدلًا منها</h2>
+    <p class="intro">قالب للتكيّف معه، لا تقويم ثابت — جدول امتحانات كل مدرسة يختلف. الفكرة هي الشكل العام: ابدأ مبكرًا، أبقِ البحث خفيفًا في الخلفية، ولا تدع أيًا مما سبق يتصادم مع امتحاناتك الفعلية.</p>
+
+    <div class="term-grid">
+      <div class="term">
+        <div class="tlabel">TERM 1</div>
+        <h4>الأساس والخطوات المبكرة</h4>
+        <ul>
+          <li>اعمل عبر مخطط من الخزنة من البداية للنهاية — من هنا يأتي أساسك التقني ودليل ملف أعمالك</li>
+          <li>حدد سؤالك البحثي الحقيقي (القسم ٠٨) وابدأ محادثة خطاب التوصية (القسم ١١) مبكرًا</li>
+          <li>تحقق من الفهرس الإقليمي وقاعدة الفرص لمعرفة نوافذ التسجيل — معظمها يُفتح في الخريف</li>
+          <li>موعد <span class="ltr">UCAS</span> لأكسفورد/كامبريدج/الطب/طب الأسنان/البيطري: ١٥ أكتوبر</li>
+        </ul>
+      </div>
+      <div class="term">
+        <div class="tlabel">TERM 2</div>
+        <h4>الطلبات تُفتح، البحث يبقى خفيفًا</h4>
+        <ul>
+          <li><span class="ltr">Common App</span> القرار المبكر: ~١–١٥ نوفمبر. القرار العادي وموعد <span class="ltr">UCAS</span> الرئيسي: يناير</li>
+          <li>اترك بناءً للتسجيل (مثل <span class="ltr">BP-002</span>) يعمل في الخلفية لجمع البيانات — يجب أن يكلفك دقائق أسبوعيًا، لا ساعات</li>
+          <li>لا تجدول عملًا بحثيًا جديدًا خلال أسابيع الامتحانات — مسجل بيانات يعمل دون إشراف مقبول؛ بدء تجارب جديدة ليس كذلك</li>
+          <li>اكتب مسودة ملخصك ومقالاتك مبكرًا، ولو تقريبيًا — تحسين مسودة سيئة أسهل بكثير من كتابة واحدة من الصفر تحت ضغط الموعد</li>
+        </ul>
+      </div>
+      <div class="term">
+        <div class="tlabel">TERM 3 / SPRING</div>
+        <h4>موسم المعارض والقرارات</h4>
+        <ul>
+          <li>المعارض المحلية والوطنية المعتمدة تجري عادة من يناير إلى أبريل — أكد موعد معرضك المحدد مبكرًا، لا تفترض</li>
+          <li>أنهِ لوحتك وملخصك قبل أسبوعين على الأقل من معرضك، لا الليلة السابقة</li>
+          <li>إذا تأهلت، فإن <span class="ltr">Regeneron ISEF</span> نفسه عادة في مايو — احجز ذلك الأسبوع مفتوحًا عمدًا</li>
+          <li>قرارات الجامعات تصل عادة خلال الربيع — تذكر أن القبول والتمويل (القسم ٠٦) قد يكونان قرارين منفصلين</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout"><p><strong>القاعدة الأهم على الإطلاق:</strong> إذا تعارض موعد بحثي مع امتحان فعليًا، يفوز الامتحان دائمًا. تسجيل معرض فائت قابل للتعويض في الدورة القادمة. كشف درجات متضرر ليس كذلك. ابنِ كل شيء حول تقويمك الأكاديمي — لا العكس أبدًا.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>مبادرة مستقلة ومفتوحة الوصول تُعلّم الهندسة العملية لطلاب المنطقة، باللغتين العربية والإنجليزية، من المبادئ الأولى إلى معارض العلوم الدولية.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);" class="ltr">salmaraies14@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
