@@ -51,6 +51,11 @@
   .title-block span:last-child{border-right:none;}
   .title-block .num{color:var(--amber);}
 
+  .lang-bar{background:var(--ink); color:#fff; text-align:center; padding:9px 0; font-size:13px;}
+  .lang-bar a{color:#fff; text-decoration:none; font-weight:600; padding:0 6px;}
+  .lang-bar a.current{color:var(--amber);}
+  .lang-bar .sep{color:var(--slate);}
+
   nav{
     position:sticky; top:0; z-index:10;
     background:rgba(255,255,255,0.92); backdrop-filter:blur(8px);
@@ -192,6 +197,10 @@
 <body>
 
 <div class="bp-bg"></div>
+
+<div class="lang-bar">
+  <a href="index-ar.html">اقرأ بالعربية</a><span class="sep">|</span><a href="index.html" class="current">Read in English</a>
+</div>
 
 <nav>
   <div class="wrap">
