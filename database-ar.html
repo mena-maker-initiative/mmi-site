@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قاعدة الفرص — مبادرة صنّاع الشرق الأوسط وشمال أفريقيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:      #FFFFFF;
+    --paper:      #F6FAFD;
+    --tint:       #EAF3FA;
+    --ink:        #16283C;
+    --ink-soft:   #3C5872;
+    --slate:      #6C8296;
+    --blue:       #2E6FA8;
+    --blue-bright:#1E6FE0;
+    --amber:      #D98A2B;
+    --green:      #1E8E5A;
+    --line:       #DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans Arabic', sans-serif; line-height:1.8; overflow-x:hidden; direction:rtl; text-align:right; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3,.display{font-family:'IBM Plex Sans Arabic', sans-serif; font-weight:700; color:var(--ink);}
+  .ltr{direction:ltr; unicode-bidi:isolate; font-family:'IBM Plex Mono', monospace; display:inline-block;}
+
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--blue); margin-bottom:22px; background:var(--white); direction:ltr; }
+  .title-block span{padding:6px 12px; border-left:1px solid var(--line);}
+  .title-block span:last-child{border-left:none;}
+  .title-block .num{color:var(--amber);}
+
+  .lang-bar{background:var(--ink); color:#fff; text-align:center; padding:9px 0; font-size:13px;}
+  .lang-bar a{color:#fff; text-decoration:none; font-weight:600; padding:0 6px;}
+  .lang-bar a.current{color:var(--amber);}
+  .lang-bar .sep{color:var(--slate);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono'; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none; direction:ltr;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:14px; font-family:'IBM Plex Sans Arabic'; font-weight:500; padding:8px 14px; border:1px solid transparent; transition:all .2s; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:1px solid var(--line); border-radius:4px; padding:9px 10px; cursor:pointer;}
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--ink);}
+  @media(max-width:900px){
+    .navlinks{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--white); border-bottom:1px solid var(--line); padding:10px 0; box-shadow:0 8px 16px rgba(22,40,60,0.08);}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 28px;}
+    .nav-toggle{display:flex;}
+  }
+
+  .hero{padding:70px 0 50px; position:relative;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:12px; margin-bottom:18px; direction:ltr; text-align:right;}
+  .hero h1{font-size:clamp(30px,5vw,44px); line-height:1.3; max-width:760px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:640px;}
+
+  section{padding:70px 0;}
+  section h2{font-size:clamp(22px,3.4vw,30px); margin-bottom:14px;}
+  section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:680px; margin-bottom:40px;}
+  .section-alt{background:var(--paper);}
+
+  .callout{ border-right:3px solid var(--amber); background:#FBF3E8; padding:24px 28px; margin: 8px 0 0; }
+  .callout p{ color:#5A3E17; font-size:16px; max-width:720px; }
+  .callout p+p{margin-top:10px;}
+
+  .isef-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media(max-width:820px){ .isef-grid{grid-template-columns:1fr;} }
+  .isef-grid p{color:var(--ink-soft); margin-bottom:12px; font-size:15px;}
+  .pathway-list{display:flex; flex-direction:column; gap:14px; margin-top:6px;}
+  .pathway{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white);}
+  .pathway .flag{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:11px; color:var(--blue); margin-bottom:6px;}
+  .pathway h4{font-size:15px; margin-bottom:6px;}
+  .pathway p{font-size:14px; color:var(--ink-soft); margin:0;}
+  .pathway.gap{border-color:var(--amber); background:#FFFCF6;}
+  .pathway.gap .flag{color:var(--amber);}
+
+  .season-label{ font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; color:var(--blue); margin: 36px 0 16px; display:flex; align-items:center; gap:10px; }
+  .season-label::after{content:''; flex:1; height:1px; background:var(--line);}
+  .prog-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media(max-width:820px){ .prog-grid{grid-template-columns:1fr;} }
+  .prog-card{border:1px solid var(--line); background:var(--white); padding:20px 22px; border-radius:4px;}
+  .prog-card h4{font-size:15.5px; margin-bottom:6px; direction:ltr; text-align:right;}
+  .prog-card p{font-size:14px; color:var(--ink-soft); margin-bottom:10px;}
+  .prog-meta{display:flex; gap:8px; flex-wrap:wrap;}
+  .prog-tag{font-family:'IBM Plex Sans Arabic'; font-size:11px; border:1px solid var(--line); color:var(--ink-soft); padding:3px 8px; border-radius:20px;}
+  .prog-tag.deadline{border-color:var(--blue); color:var(--blue); background:var(--tint);}
+  .prog-tag.free{border-color:var(--green); color:var(--green);}
+
+  .verify-note{ margin-top:28px; border-right:3px solid var(--blue); background:var(--tint); padding:14px 18px; font-size:14px; color:var(--ink-soft); }
+
+  .dbcat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:820px){ .dbcat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .dbcat-grid{grid-template-columns:1fr;} }
+  .dbcat{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white);}
+  .dbcat h4{font-size:14.5px; margin-bottom:6px;}
+  .dbcat p{font-size:13px; color:var(--ink-soft); margin-bottom:10px;}
+  .dbcat-status{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:10.5px; padding:3px 9px; border-radius:20px; display:inline-block;}
+  .dbcat-status.live{background:#E7F5EE; color:var(--green);}
+  .dbcat-status.soon{background:#FBF3E8; color:var(--amber);}
+
+  .mmi-comp{border:1.5px dashed var(--blue); border-radius:6px; padding:40px; text-align:right; background:var(--paper);}
+  @media(max-width:720px){ .mmi-comp{padding:26px 20px;} }
+  .mmi-comp h3{font-size:19px; margin-bottom:10px;}
+  .mmi-comp p{color:var(--ink-soft); font-size:15px; max-width:640px;}
+  .mmi-comp .status-tag{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:12px; color:var(--amber); margin-bottom:12px; display:inline-block; border:1px solid var(--amber); padding:4px 10px; border-radius:20px;}
+
+  .follow-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media(max-width:820px){ .follow-grid{grid-template-columns:1fr;} }
+  .follow-card{border:1px solid var(--line); border-radius:4px; padding:26px; background:var(--white);}
+  .follow-card h3{font-size:17px; margin-bottom:10px;}
+  .follow-card p{color:var(--ink-soft); font-size:14.5px; margin-bottom:16px;}
+  .roadmap-mini{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+  .rmi{display:flex; gap:10px; align-items:flex-start; font-size:14px; color:var(--ink-soft);}
+  .rmi .dot{width:7px; height:7px; border-radius:50%; background:var(--blue); margin-top:6px; flex-shrink:0;}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13.5px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; direction:ltr;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<div class="lang-bar">
+  <a href="database-ar.html" class="current">العربية</a><span class="sep">|</span><a href="database.html">Read in English</a>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a href="index-ar.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index-ar.html#vault">الخزنة</a>
+      <a href="playbook-ar.html">الدليل الإرشادي</a>
+      <a href="database-ar.html" class="active">قاعدة الفرص</a>
+      <a href="horizon-ar.html">تحدي الأفق</a>
+      <a href="board-ar.html">المجلس</a>
+      <a href="index-ar.html#about">نبذة عنا</a>
+    </div>
+    <button class="nav-toggle" aria-label="القائمة" onclick="this.parentElement.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;002</div>
+    <h1>قاعدة الفرص</h1>
+    <p class="lede">مسابقات، أولمبياد، منح دراسية، جامعات، برامج بحثية، زمالات، تدريب، منح صغيرة، مؤتمرات، مدارس صيفية، وفرص تبادل — في مكان واحد قابل للبحث، مصمم حسب نقطة انطلاقك الفعلية. اقرأ الملاحظة أدناه أولًا رغم ذلك — فهي أهم من كل شيء آخر هنا.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <p><strong>مهم، قبل أي شيء آخر في هذه الصفحة: الكأس ليست الهدف.</strong> <span class="ltr">ISEF</span>، البرامج أدناه، مسابقات <span class="ltr">MMI</span> الخاصة — كل واحدة منها موجودة لتمنحك سببًا للاستمرار في البناء وغرفة لعرضه فيها. إنها ليست الهدف. القيمة الحقيقية كانت دائمًا في المشروع نفسه — الشيء الذي أثار فضولك بما يكفي لإنجازه، الخلل الذي طاردته في الساعة الثانية صباحًا، السؤال الذي تابعته لأنه مهم <em>لك أنت</em>، لا لأن محكّمًا قد يعجبه.</p>
+      <p>المسابقات مكان واحد يمكنك إحضار ذلك العمل إليه بعد أن يوجد. ليست سببًا لتبدأ. ابنِ أشياء تهمك أولًا — هذه الصفحة فقط تتأكد من أنك حين تكون جاهزًا لعرضها على أحد، تعرف بالضبط إلى أين تذهب، بدليل واضح وموارد حقيقية مبنية لنقطة انطلاقك، لا نصائح عامة مكتوبة لسياق شخص آخر.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="categories">
+  <div class="wrap">
+    <div class="title-block"><span class="num">00</span><span>Overview</span><span>WHAT'S IN THE DATABASE</span></div>
+    <h2>إحدى عشرة فئة، تُبنى بصدق أثناء العمل</h2>
+    <p class="intro">ليس كل شيء هنا مكتملًا بعد — كل عنصر موسوم بوضوح، لتعرف ما هو حقيقي اليوم مقابل ما هو قادم.</p>
+    <div class="dbcat-grid">
+      <div class="dbcat"><h4>المسابقات والمعارض</h4><p>مسارات <span class="ltr">ISEF</span> والمعارض المعتمدة عبر المنطقة.</p><span class="dbcat-status live">متوفر</span></div>
+      <div class="dbcat"><h4>البرامج البحثية والصيفية</h4><p>برامج دولية بمواعيد حقيقية أدناه.</p><span class="dbcat-status live">متوفر</span></div>
+      <div class="dbcat"><h4>أولمبياد الرياضيات والبرمجة</h4><p>نقاط الدخول، موارد التحضير، الجداول الزمنية.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>المنح الدراسية</h4><p>منح كاملة وجزئية حسب الجامعة.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>الجامعات</h4><p>قابلة للبحث حسب المنطقة والتمويل والبرنامج.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>الزمالات</h4><p>زمالات قائمة على الجدارة لطلاب المدارس الثانوية.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>التدريب</h4><p>تدريب بحثي وصناعي مفتوح لمن هم دون ١٨ عامًا.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>المنح الصغيرة</h4><p>منح مشاريع/سفر صغيرة للباحثين الطلاب.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>المؤتمرات</h4><p>مؤتمرات علمية وقيادية شبابية حول العالم.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>برامج التبادل</h4><p>فرص تبادل ثقافي وأكاديمي.</p><span class="dbcat-status soon">قريبًا</span></div>
+      <div class="dbcat"><h4>مسابقات <span class="ltr">MMI</span> الخاصة</h4><p><span class="ltr">Horizon Challenge</span> ومسابقات داخلية مستقبلية.</p><span class="dbcat-status live">متوفر</span></div>
+    </div>
+    <div class="verify-note">ستستمر هذه الصفحة في النمو مع شغل مقعد مسؤول البحث والموارد في المجلس — راجع <a href="board-ar.html" style="color:var(--blue);">المجلس</a>. كل فئة جديدة تحصل على نفس المعاملة كالفئات أدناه: بحث حقيقي، فجوات صريحة، لا عناصر مُختلَقة.</div>
+  </div>
+</section>
+
+<section class="section-alt" id="isef">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Explainer</span><span>WHAT ISEF ACTUALLY IS</span></div>
+    <h2>أكبر معرض علمي لما قبل الجامعة في العالم — وكيف تصل إليه فعليًا</h2>
+    <div class="isef-grid">
+      <div>
+        <p><span class="ltr">Regeneron ISEF</span> (المعرض الدولي للعلوم والهندسة) مسابقة دولية مدتها أسبوع، يقدّم فيها حوالي ١٨٠٠ متأهل من أكثر من ٧٥ دولة بحثًا أصيلًا للتحكيم، بمنح وجوائز تبلغ قيمتها الإجمالية عدة ملايين من الدولارات.</p>
+        <p>الجزء المهم الذي لا يشرحه أحد بوضوح تقريبًا: <strong>لا يمكنك التقديم لـ<span class="ltr">ISEF</span> مباشرة.</strong> تتأهل بالتفوق في معرض "معتمد من <span class="ltr">Society for Science</span>" في بلدك أو منطقتك أولًا — <span class="ltr">ISEF</span> المحطة الأخيرة في سلسلة، لا شيء تدخله مباشرة من الصفر. موسم المعارض يمتد عادة من يناير إلى أبريل، والحدث الدولي نفسه في مايو.</p>
+        <p>كل مشاركة مشروع واحد، فردي أو بفريق من حتى ثلاثة، مبني على أقصى اثني عشر شهرًا متواصلة من البحث.</p>
+      </div>
+      <div>
+        <div class="pathway-list">
+          <div class="pathway">
+            <div class="flag">مصر</div>
+            <h4>مساران نشطان</h4>
+            <p><strong><span class="ltr">ISEF Egypt</span></strong>، الذي تديره المؤسسة العربية للعلوم والتكنولوجيا (<span class="ltr">ASTF</span>)، هو المعتمد الرسمي من <span class="ltr">Society for Science</span> — الطريق المباشر إلى <span class="ltr">Regeneron ISEF</span>. <strong><span class="ltr">EISTF</span></strong> معرض ثانٍ منفصل مقره القاهرة ومفتوح للطلاب على مستوى الجمهورية. يستحق دخول كليهما إن كنت مؤهلًا.</p>
+          </div>
+          <div class="pathway gap">
+            <div class="flag">البحرين — فجوة معروفة</div>
+            <h4>لم نجد معرضًا معتمدًا مخصصًا</h4>
+            <p>لم نتمكن من تأكيد معرض معتمد من <span class="ltr">Society for Science</span> مقره البحرين وقت الكتابة. إذا كنت هناك، تحقق مباشرة من دليل <strong><span class="ltr">Find-a-Fair</span></strong> الرسمي (<span class="ltr">societyforscience.org</span>) قبل افتراض عدم وجود مسار — الاعتمادات تُفتح وتتغير. هذه فجوة حقيقية في المسار الإقليمي، وجزء من سبب وجود وحدة الدليل الإرشادي.</p>
+          </div>
+          <div class="pathway">
+            <div class="flag">أي مكان في المنطقة</div>
+            <h4>الافتراضي: <span class="ltr">Find-a-Fair</span></h4>
+            <p>إذا لم تُذكر بلدك أعلاه، فدليل <span class="ltr">Society for Science</span> الرسمي هو المصدر الموثوق لما هو معتمد حاليًا بالقرب منك — يتحدّث مع اعتماد المعارض كل عام، فتحقق منه مباشرة بدلًا من الاعتماد على أي قائمة ثابتة، بما فيها هذه.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Category</span><span>RESEARCH &amp; SUMMER PROGRAMS</span></div>
+    <h2>برامج بحثية ومعسكرات مفتوحة لطلاب خارج الولايات المتحدة</h2>
+    <p class="intro">كل برنامج أدناه يقبل الطلاب الدوليين صراحة ويسرد مواعيد حقيقية تمكّنا من التحقق منها. المواعيد تتغير قليلًا كل عام — تأكد دائمًا من التاريخ الدقيق على موقع البرنامج نفسه قبل التخطيط حوله.</p>
+
+    <div class="season-label">مواعيد الخريف (أكتوبر–ديسمبر)</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>Yale Young Global Scholars (YYGS) — Early Action</h4>
+        <p>برنامج سكني مدته أسبوعان في جامعة <span class="ltr">Yale</span> ضمن مسارات العلوم والتكنولوجيا، أو السياسة والاقتصاد، أو التحديات العالمية. مساعدات مالية متاحة للطلاب الدوليين، تصل لتغطية كاملة.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">التقديم المبكر ~منتصف أكتوبر</span><span class="prog-tag">الصفوف ١٠–١١</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Telluride Association Summer Seminars (TASS)</h4>
+        <p>برنامج ندوات ممول بالكامل مدته ستة أسابيع (يشمل السفر) لطلاب السنة قبل الأخيرة، بسجل طويل في تخريج علماء وقادة عامين.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">~منتصف يناير</span><span class="prog-tag free">ممول بالكامل</span></div>
+      </div>
+    </div>
+
+    <div class="season-label">مواعيد الشتاء (يناير–فبراير)</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>Yale Young Global Scholars — Regular Decision</h4>
+        <p>نفس البرنامج أعلاه؛ موعد لاحق إذا فاتك التقديم المبكر.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">~أوائل يناير</span><span class="prog-tag">الصفوف ١٠–١١</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Summer Science Program (SSP)</h4>
+        <p>برنامج بحثي سكني مدته ٣٩ يومًا — فرق تحسب مدارات كويكبات حقيقية أو تُجري بحوث جينوم/كيمياء حيوية بأدوات احترافية. لطلاب السنة الأخيرة من أي بلد؛ مساعدات مالية متاحة.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">أواخر فبراير</span><span class="prog-tag">السنة الأخيرة</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Garcia Research Scholars (Stony Brook University)</h4>
+        <p>برنامج بحث مخبري مدته سبعة أسابيع في علوم المواد، أو الهندسة الطبية الحيوية، أو البيولوجيا الجزيئية، بمشاريع حقيقية يقودها أعضاء هيئة تدريس.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">أوائل–منتصف فبراير</span><span class="prog-tag">السنتان الأخيرتان</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>ASSIP (George Mason University)</h4>
+        <p>دور بحثي بدوام كامل لثمانية أسابيع تحت إشراف هيئة تدريس جامعية في الروبوتات، أو علم الأعصاب، أو العلوم البيئية، أو الهندسة الحيوية. مسارات عن بُعد وحضورية.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">أوائل فبراير</span><span class="prog-tag">من عمر ١٥+</span></div>
+      </div>
+    </div>
+
+    <div class="season-label">مستمر / بلا موعد ثابت</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h4>ISEF-Affiliated Fairs (Egypt: ASTF / EISTF)</h4>
+        <p>موسم المعارض المحلية والوطنية — المسار الفعلي إلى <span class="ltr">Regeneron ISEF</span>. نوافذ التسجيل تختلف حسب المعرض؛ تحقق من كل موقع مباشرة كل خريف.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">الموسم: يناير–أبريل</span><span class="prog-tag free">مجاني للدخول</span></div>
+      </div>
+      <div class="prog-card">
+        <h4>Qatar Foundation Regional Camps (Mukhayamna, Qatar Invents)</h4>
+        <p>معسكرات صيفية خليجية في الحوسبة، وعلوم الكم، والتصميم الهندسي العملي، تُستضاف في <span class="ltr">Education City</span>. مقرها قطر أساسًا لكن يستحق التحقق من الأهلية إن كنت في الخليج.</p>
+        <div class="prog-meta"><span class="prog-tag deadline">التقديم يُفتح في الربيع</span><span class="prog-tag">إقليمي</span></div>
+      </div>
+    </div>
+
+    <div class="verify-note">نربط كل برنامج بمصدره الرسمي حيثما أمكن ونعيد فحص هذه القائمة دوريًا — لكن تعامل مع كل موعد هنا كنقطة انطلاق لبحثك الخاص، لا إجابة نهائية. البرامج تغيّر شروط الأهلية والمواعيد دون إشعار كبير.</div>
+  </div>
+</section>
+
+<section class="section-alt" id="mmi-competitions">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Coming Soon</span><span>MMI'S OWN COMPETITIONS</span></div>
+    <div class="mmi-comp">
+      <span class="status-tag">قيد التطوير</span>
+      <h3>تحديات معرفية منتظمة، جوائز، ورعاية</h3>
+      <p>إلى جانب توجيهك نحو المعارض الخارجية، تبني <span class="ltr">MMI</span> مسابقاتها المتكررة الخاصة — تحديات معرفية قصيرة لاختبار ما تعلمته من الخزنة، بجوائز حقيقية ودعم رعاة، بالإضافة لهاكاثون <strong><span class="ltr">Horizon Challenge</span></strong> السنوي. هذا حقًا لا يزال قيد التطوير، وليس مباشرًا بعد — النسخة الصادقة من هذا القسم ستنمو مع تشكّل المجلس. راجع قسم <a href="horizon-ar.html" style="color:var(--blue);">Horizon Challenge</a> لما تم تأكيده حتى الآن.</p>
+    </div>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>Coming Soon</span><span>FOLLOW &amp; READ STORIES</span></div>
+    <h2>طلاب حقيقيون من المنطقة، ماذا بنوا، وإلى أين وصلوا</h2>
+    <p class="intro">هذا القسم فارغ فعليًا الآن — لا قصص منشورة، لا حساب إنستغرام مباشر بعد. إليك ما هو مخطط له، لتعرف ما تتوقعه بدلًا من إيجاد نائب فارغ بلا سياق.</p>
+    <div class="follow-grid">
+      <div class="follow-card">
+        <h3>اقرأ القصص</h3>
+        <p>ملفات لطلاب من المنطقة بنوا مشاريع حقيقية بهذا النوع من العتاد والبحث — ماذا صنعوا، ماذا حدث خطأً، وإلى أين قادهم ذلك لاحقًا. لا شيء منشور بعد؛ يُطلق هذا بمجرد وجود أول دفعة من مشاريع مبنية على المخططات لنكتب عنها.</p>
+      </div>
+      <div class="follow-card">
+        <h3>سلسلة المتحدثين</h3>
+        <p>لقاءات ومقابلات مخطط لها، تبدأ صغيرة وتنمو مع المبادرة:</p>
+        <div class="roadmap-mini">
+          <div class="rmi"><span class="dot"></span>المرحلة ١ — طلاب جامعيون يدرسون الهندسة حاليًا، يشاركون ما أدخلهم فعليًا</div>
+          <div class="rmi"><span class="dot"></span>المرحلة ٢ — أعضاء هيئة تدريس ومرشدو بحث</div>
+          <div class="rmi"><span class="dot"></span>المرحلة ٣ — فائزون سابقون بـ<span class="ltr">ISEF</span> وأصوات أبرز في المجال، مع نمو مدى وصول <span class="ltr">MMI</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>مبادرة مستقلة ومفتوحة الوصول تُعلّم الهندسة العملية لطلاب المنطقة، باللغتين العربية والإنجليزية، من المبادئ الأولى إلى معارض العلوم الدولية.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);" class="ltr">salmaraies14@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
