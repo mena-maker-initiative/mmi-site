@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحدي الأفق — مبادرة صنّاع الشرق الأوسط وشمال أفريقيا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF; --paper:#F6FAFD; --tint:#EAF3FA; --ink:#16283C; --ink-soft:#3C5872;
+    --slate:#6C8296; --blue:#2E6FA8; --blue-bright:#1E6FE0; --amber:#D98A2B; --green:#1E8E5A; --line:#DCE7F0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--white); color:var(--ink); font-family:'IBM Plex Sans Arabic', sans-serif; line-height:1.8; overflow-x:hidden; direction:rtl; text-align:right; }
+  .bp-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size:48px 48px; opacity:0.55; mask-image: linear-gradient(180deg, black, black 20%, transparent 75%); }
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  h1,h2,h3{font-family:'IBM Plex Sans Arabic', sans-serif; font-weight:700; color:var(--ink);}
+  .ltr{direction:ltr; unicode-bidi:isolate; font-family:'IBM Plex Mono', monospace; display:inline-block;}
+
+  .title-block{ display:inline-flex; align-items:stretch; border:1px solid var(--blue); font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--blue); margin-bottom:22px; background:var(--white); direction:ltr; }
+  .title-block span{padding:6px 12px; border-left:1px solid var(--line);}
+  .title-block span:last-child{border-left:none;}
+  .title-block .num{color:var(--amber);}
+
+  .lang-bar{background:var(--ink); color:#fff; text-align:center; padding:9px 0; font-size:13px;}
+  .lang-bar a{color:#fff; text-decoration:none; font-weight:600; padding:0 6px;}
+  .lang-bar a.current{color:var(--amber);}
+  .lang-bar .sep{color:var(--slate);}
+
+  nav{ position:sticky; top:0; z-index:10; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1100px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'IBM Plex Mono'; font-weight:700; font-size:18px; color:var(--ink); text-decoration:none; direction:ltr;}
+  .logo-mark{width:22px; height:22px; border:1.5px solid var(--blue); position:relative; flex-shrink:0;}
+  .logo-mark::before{content:''; position:absolute; inset:4px; border:1px solid var(--amber);}
+  .navlinks{display:flex; gap:2px;}
+  .navlinks a{ color:var(--ink-soft); text-decoration:none; font-size:14px; font-family:'IBM Plex Sans Arabic'; font-weight:500; padding:8px 14px; border:1px solid transparent; transition:all .2s; }
+  .navlinks a:hover, .navlinks a.active{color:var(--blue-bright); background:var(--tint);}
+  .nav-toggle{display:none; flex-direction:column; gap:4px; background:none; border:1px solid var(--line); border-radius:4px; padding:9px 10px; cursor:pointer;}
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--ink);}
+  @media(max-width:900px){
+    .navlinks{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--white); border-bottom:1px solid var(--line); padding:10px 0; box-shadow:0 8px 16px rgba(22,40,60,0.08);}
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 28px;}
+    .nav-toggle{display:flex;}
+  }
+
+  .hero{padding:70px 0 40px;}
+  .hero .eyebrow{color:var(--blue); font-family:'IBM Plex Mono'; font-size:12px; margin-bottom:18px; direction:ltr; text-align:right;}
+  .hero h1{font-size:clamp(30px,5vw,46px); line-height:1.3; max-width:700px; margin-bottom:20px;}
+  .hero p.lede{font-size:17px; color:var(--ink-soft); max-width:660px; margin-bottom:14px;}
+  .hero p.lede2{font-size:15px; color:var(--ink-soft); max-width:660px;}
+  .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+  .fact-badge{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:13px; border:1px solid var(--blue); color:var(--blue); padding:8px 16px; border-radius:20px; background:var(--tint);}
+  .fact-badge.open{border-color:var(--green); color:var(--green); background:#E7F5EE;}
+
+  section{padding:56px 0;}
+  section h2{font-size:clamp(20px,3vw,26px); margin-bottom:14px;}
+  section > .wrap > p.intro{color:var(--ink-soft); font-size:16px; max-width:680px; margin-bottom:32px;}
+  .section-alt{background:var(--paper);}
+
+  .callout{ border-right:3px solid var(--amber); background:#FBF3E8; padding:18px 22px; margin: 8px 0 0; }
+  .callout p{ color:#5A3E17; font-size:15px; }
+  .callout.blue{ border-right-color:var(--blue); background:var(--tint); }
+  .callout.blue p{ color:var(--ink-soft); }
+
+  .assumption{ border:1px dashed var(--amber); background:#FFFCF6; padding:12px 16px; font-size:13.5px; color:#5A3E17; margin-bottom:30px; }
+
+  .cat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:780px){ .cat-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .cat-grid{grid-template-columns:1fr;} }
+  .cat-card{border:1px solid var(--line); border-radius:4px; padding:16px 18px; background:var(--white); font-size:14.5px; color:var(--ink); font-weight:600;}
+
+  .format-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .format-pill{font-family:'IBM Plex Sans Arabic'; font-weight:500; font-size:12.5px; border:1px solid var(--blue); color:var(--blue); padding:6px 12px; border-radius:20px; background:var(--tint);}
+
+  .flow{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  .flow-step{display:flex; gap:18px; padding:20px 24px; border-bottom:1px solid var(--line); background:var(--white);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{font-family:'IBM Plex Mono'; font-size:13px; color:var(--amber); font-weight:700; flex-shrink:0; width:24px;}
+  .flow-step h4{font-size:15.5px; margin-bottom:6px;}
+  .flow-step p{font-size:14px; color:var(--ink-soft); margin:0 0 4px;}
+  .flow-step ul{margin:6px 18px 0 0; padding:0;}
+  .flow-step li{font-size:13.5px; color:var(--ink-soft); margin-bottom:3px;}
+
+  .req-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin: 6px 0 10px;}
+  @media(max-width:780px){ .req-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .req-grid{grid-template-columns:1fr;} }
+  .req-chip{border:1px solid var(--line); border-radius:4px; padding:18px; background:var(--white);}
+  .req-chip h4{font-size:14.5px; margin-bottom:6px; color:var(--blue);}
+  .req-chip p{font-size:13px; color:var(--ink-soft); margin:0;}
+
+  .rules-list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .rules-list li{display:flex; gap:10px; font-size:14.5px; color:var(--ink-soft); align-items:flex-start;}
+  .rules-list li::before{content:'—'; color:var(--blue); flex-shrink:0;}
+
+  .timeline-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .tbox{border:1px solid var(--line); background:var(--white); padding:16px 20px; border-radius:4px; min-width:170px; flex:1;}
+  .tbox .tl{font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:11px; color:var(--blue); margin-bottom:5px;}
+  .tbox .tv{font-family:'IBM Plex Mono'; font-weight:700; font-size:14px; color:var(--ink); direction:ltr;}
+  .tbox.set .tv{color:var(--green);}
+
+  .apply-box{border:1.5px solid var(--blue); border-radius:8px; padding:44px; text-align:center; background:var(--tint);}
+  @media(max-width:600px){ .apply-box{padding:28px 20px;} }
+  .apply-box h2{margin-bottom:12px;}
+  .apply-box p{color:var(--ink-soft); font-size:15.5px; max-width:520px; margin:0 auto 24px;}
+  .btn{ font-family:'IBM Plex Sans Arabic'; font-weight:600; font-size:14px; padding:15px 32px; text-decoration:none; display:inline-block; border:1.5px solid var(--blue-bright); border-radius:3px; transition:all .18s; }
+  .btn-primary{background:var(--blue-bright); border-color:var(--blue-bright); color:#fff;}
+  .btn-primary:hover{background:var(--blue);}
+
+  .closing{text-align:center; padding:60px 0 80px;}
+  .closing p{font-size:18px; color:var(--ink-soft); max-width:520px; margin:0 auto 8px;}
+  .closing p.final{color:var(--ink); font-weight:700; margin-top:18px; font-size:19px;}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 40px; background:var(--paper);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px; max-width:1100px;}
+  footer .f-brand{max-width:340px;}
+  footer .f-brand p{color:var(--ink-soft); font-size:13.5px; margin-top:10px;}
+  footer .bottom{margin-top:40px; padding-top:20px; border-top:1px solid var(--line); font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--slate); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; max-width:1100px; margin-left:auto; margin-right:auto; direction:ltr;}
+</style>
+</head>
+<body>
+
+<div class="bp-bg"></div>
+
+<div class="lang-bar">
+  <a href="horizon-ar.html" class="current">العربية</a><span class="sep">|</span><a href="horizon.html">Read in English</a>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a href="index-ar.html" class="logo" style="text-decoration:none;"><span class="logo-mark"></span> MMI</a>
+    <div class="navlinks">
+      <a href="index-ar.html#vault">الخزنة</a>
+      <a href="playbook-ar.html">الدليل الإرشادي</a>
+      <a href="database-ar.html">قاعدة الفرص</a>
+      <a href="horizon-ar.html" class="active">تحدي الأفق</a>
+      <a href="board-ar.html">المجلس</a>
+      <a href="index-ar.html#about">نبذة عنا</a>
+    </div>
+    <button class="nav-toggle" aria-label="القائمة" onclick="this.parentElement.querySelector('.navlinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">MENA MAKER INITIATIVE — DRAWING NO. MMI&#8209;005</div>
+    <h1>تحدي الأفق</h1>
+    <p class="lede"><strong>ابنِ شيئًا يهم فعلًا.</strong> تحدي الأفق هو تحدي <span class="ltr">MMI</span> الرائد — تحدٍ هندسي ابتكاري دولي افتراضي مدته ٤٨ ساعة، يجمع طلابًا من حول العالم لمواجهة مشاكل واقعية عبر الهندسة.</p>
+    <p class="lede2">لست بحاجة لنموذج أولي مثالي. لست بحاجة لمعدات باهظة. تحتاج فكرة تستحق الاستكشاف وعزيمة لبنائها.</p>
+    <div class="badge-row">
+      <span class="fact-badge">١٤–١٦ أغسطس ٢٠٢٦</span>
+      <span class="fact-badge">فردي أو فرق حتى ٣</span>
+      <span class="fact-badge open">التسجيل مفتوح الآن</span>
+    </div>
+    <p style="font-size:14.5px; color:var(--ink-soft); margin-top:16px;"><strong>الأهلية:</strong> مفتوح لطلاب المدارس الثانوية حول العالم، من عمر ١٣ فما فوق. المشاركون الدوليون مرحّب بهم — التحدي يُقام افتراضيًا بالكامل.</p>
+  </div>
+</header>
+
+<section id="what-to-build">
+  <div class="wrap">
+    <div class="title-block"><span class="num">01</span><span>Format</span><span>HOW IT STARTS</span></div>
+    <h2>الجميع يبدأ من نفس الخط</h2>
+    <p class="intro">في البداية الرسمية للتحدي، تُكشف خمسة بيانات تحدٍ دفعة واحدة — مجالات مشاكل حقيقية، لا مواجز ثابتة. تختار الفرق <strong>واحدًا</strong> وتبني تقديمها بالكامل حوله للـ٤٨ ساعة التالية. لا أحد يحصل على بداية مبكرة في المشكلة الفعلية، مهما سجّل مبكرًا.</p>
+
+    <div class="cat-grid">
+      <div class="cat-card">الرعاية الصحية</div>
+      <div class="cat-card">إمكانية الوصول</div>
+      <div class="cat-card">المناخ</div>
+      <div class="cat-card">التعليم</div>
+      <div class="cat-card">الروبوتات</div>
+    </div>
+    <p style="font-size:13px; color:var(--slate); margin-top:10px;">مجموعة أمثلة موضحة أعلاه — البيانات الخمسة الفعلية تُكشف فقط عند بدء التحدي.</p>
+
+    <div class="assumption" style="margin-top:26px;"><strong>شيء يجب معرفته:</strong> تفترض هذه الصفحة أن بناء العتاد الفعلي والتقديمات المحاكاة/البرمجية فقط مرحّب بها بالتساوي، بغض النظر عن أي بيان تختاره — خيار متعمد لإبقاء التحدي متاحًا للطلاب دون وصول متساوٍ للعتاد.</div>
+
+    <h3 style="font-size:16px; margin:28px 0 4px;">كيف يمكن أن يبدو تقديمك</h3>
+    <p style="font-size:14.5px; color:var(--ink-soft); margin-bottom:6px;">سواء كان تقديمك النهائي نموذجًا أوليًا عاملًا، أو محاكاة، أو نموذج <span class="ltr">CAD</span>، أو حلًا مدعومًا بالذكاء الاصطناعي، أو مفهومًا هندسيًا متطورًا جيدًا — نريد أن نرى ما تصنعه.</p>
+
+    <div class="format-list">
+      <span class="format-pill">نموذج عتاد فعلي</span>
+      <span class="format-pill">محاكاة <span class="ltr">Wokwi / Tinkercad</span></span>
+      <span class="format-pill">حل بالذكاء الاصطناعي</span>
+      <span class="format-pill">تطبيق ويب أو جوال</span>
+      <span class="format-pill">نموذج أو تصميم <span class="ltr">CAD</span></span>
+      <span class="format-pill">تصميم دائرة / <span class="ltr">PCB</span></span>
+      <span class="format-pill">مشروع أنظمة مدمجة</span>
+      <span class="format-pill">محاكاة هندسية</span>
+      <span class="format-pill">مفهوم مدعوم بالبحث</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="ai-policy">
+  <div class="wrap">
+    <div class="title-block"><span class="num">02</span><span>Policy</span><span>AI USE</span></div>
+    <h2>الذكاء الاصطناعي مرحّب به. الحكم الهندسي أولًا.</h2>
+    <div class="callout blue">
+      <p>أدوات الذكاء الاصطناعي مرحّب بها للعصف الذهني، والبحث، ودعم البرمجة، وتصحيح الأخطاء، والنمذجة الأولية، واستكشاف التصميم. لكن يجب على كل مشارك أن يفهم ويتحقق من كل جزء من تقديمه وأن يكون قادرًا على شرحه. يجب أن يسرّع الذكاء الاصطناعي عمليتك الهندسية — لا أن يحل محل تفكيرك الهندسي.</p>
+    </div>
+  </div>
+</section>
+
+<section id="submission">
+  <div class="wrap">
+    <div class="title-block"><span class="num">03</span><span>Requirements</span><span>WHAT TO SUBMIT</span></div>
+    <h2>خمسة أجزاء لكل تقديم</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div><h4>معلومات المشروع</h4><p>عنوان المشروع، أسماء أعضاء الفريق، بريد إلكتروني للتواصل، فئة التحدي.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div><h4>بيان المشكلة</h4><p>ما المشكلة الواقعية التي تحلها، ولماذا تهم؟</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div><h4>حلّك</h4><p>نهجك الهندسي، كيف يعمل، والتفكير وراء قرارات تصميمك.</p></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div><h4>مواد داعمة</h4><p>أي شيء يساعد المحكّمين على فهم عملك:</p>
+        <ul><li>مستودع <span class="ltr">GitHub</span></li><li>موقع أو تطبيق مباشر</li><li>محاكاة <span class="ltr">Wokwi</span></li><li>ملفات <span class="ltr">CAD</span> / تصاميم <span class="ltr">PCB</span></li><li>مخططات دوائر، صور، أو لقطات شاشة</li><li>توثيق بحثي أو صور نموذج أولي</li></ul></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div><h4>عرض المشروع</h4><p>إما فيديو مدته ٢–٣ دقائق، أو ملخص <span class="ltr">PDF</span> من صفحة إلى صفحتين، يغطي: ماذا بنيت، ما المشكلة التي يحلها، كيف يعمل، ما الأدوات التي استخدمتها، ما التحديات التي تغلبت عليها، وإذا استخدمت الذكاء الاصطناعي — كيف أسهم في عمليتك.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="judging">
+  <div class="wrap">
+    <div class="title-block"><span class="num">04</span><span>Evaluation</span><span>JUDGING CRITERIA</span></div>
+    <h2>ماذا يبحث عنه المحكّمون</h2>
+    <div class="callout blue" style="margin-bottom:30px;">
+      <p><strong>لجنة تحكيم مستقلة.</strong> تُقيَّم المشاريع من قبل لجنة مستقلة من طلاب هندسة جامعيين، وباحثين، ومحترفين في الصناعة — لضمان عملية تحكيم عادلة وصارمة تقنيًا.</p>
+    </div>
+    <div class="req-grid">
+      <div class="req-chip"><h4>التفكير الهندسي</h4><p>المنطق وراء قراراتك، لا النتيجة فقط.</p></div>
+      <div class="req-chip"><h4>الابتكار والإبداع</h4><p>زوايا أصيلة للمشكلة.</p></div>
+      <div class="req-chip"><h4>الجودة التقنية</h4><p>مدى جودة عمل الشيء فعليًا.</p></div>
+      <div class="req-chip"><h4>الجدوى</h4><p>هل يمكن أن يعمل هذا واقعيًا بعد التحدي؟</p></div>
+      <div class="req-chip"><h4>الأثر الواقعي</h4><p>هل يعالج مشكلة تهم؟</p></div>
+      <div class="req-chip"><h4>التواصل</h4><p>هل يمكنك شرحه بوضوح لشخص خارج فريقك؟</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="title-block"><span class="num">05</span><span>Rules</span><span>GUIDELINES</span></div>
+    <h2>حافظ على العدل والصدق</h2>
+    <div class="callout" style="margin-bottom:26px;">
+      <p><strong>ماذا تعني "٤٨ ساعة" فعليًا:</strong> خلال فترة التحدي الرسمية، من المتوقع أن تطوّر <em>جوهر</em> مشروعك — يجب أن يُتصوَّر الحل الهندسي نفسه ويُطوَّر خلال التحدي، بمجرد كشف البيان الذي اختاره فريقك. التحضير المسبق مرحّب به بالكامل: تشكيل فريقك، تعلّم أدوات جديدة، تثبيت البرمجيات، وجمع المواد كلها مقبولة مسبقًا.</p>
+    </div>
+    <ul class="rules-list">
+      <li>مفتوح لطلاب المدارس الثانوية حول العالم، من عمر ١٣ فما فوق — المشاركون الدوليون مرحّب بهم، التحدي يُقام افتراضيًا بالكامل.</li>
+      <li>يمكن للمشاركين المنافسة فرديًا أو في فرق تصل لثلاثة.</li>
+      <li>يُختار بيان تحديك من الخمسة المكشوفة في البداية الرسمية — يُبنى الحل الهندسي الأساسي خلال نافذة الـ٤٨ ساعة، لا قبلها.</li>
+      <li>التحضير قبل التحدي (تشكيل الفريق، تعلّم الأدوات، تثبيت البرمجيات، جمع المواد) مرحّب به ومُشجَّع.</li>
+      <li>يجب أن تكون كل التقديمات أصيلة.</li>
+      <li>يمكن استخدام المكتبات الموجودة، والبرمجيات مفتوحة المصدر، والموارد المتاحة للعامة مع التوثيق المناسب.</li>
+      <li>الذكاء الاصطناعي مسموح وفق سياسة الذكاء الاصطناعي أعلاه.</li>
+      <li>يجب أن يكون المشاركون مستعدين لشرح كل جانب من تقديمهم إذا سأل أحد المحكّمين.</li>
+      <li>كن محترمًا، متعاونًا، وحافظ على النزاهة الأكاديمية طوال الوقت.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-alt" id="timeline">
+  <div class="wrap">
+    <div class="title-block"><span class="num">06</span><span>Schedule</span><span>TIMELINE</span></div>
+    <h2>المواعيد مؤكدة</h2>
+    <p class="intro">التسجيل مفتوح الآن. أوقات البدء/الانتهاء الدقيقة في ١٤ و١٦ أغسطس ستُؤكد قرب الموعد — الأيام نفسها محددة نهائيًا.</p>
+    <div class="timeline-row">
+      <div class="tbox set"><div class="tl">التسجيل يُفتح</div><div class="tv">Open Now</div></div>
+      <div class="tbox set"><div class="tl">آخر موعد للتسجيل</div><div class="tv">Wed, Aug 12, 2026</div></div>
+      <div class="tbox set"><div class="tl">بداية التحدي</div><div class="tv">Fri, Aug 14, 2026</div></div>
+      <div class="tbox set"><div class="tl">نهاية التحدي</div><div class="tv">Sun, Aug 16, 2026</div></div>
+      <div class="tbox"><div class="tl">إعلان النتائج</div><div class="tv">TBD</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <div class="wrap">
+    <div class="apply-box">
+      <h2>التسجيل مفتوح الآن</h2>
+      <p>مفتوح لطلاب المدارس الثانوية حول العالم، من عمر ١٣+. فردي أو في فرق حتى ثلاثة. يُغلق التسجيل يوم الأربعاء ١٢ أغسطس ٢٠٢٦ — تُكشف بيانات التحدي الخمسة عند بدء التحدي في ١٤ أغسطس.</p>
+      <a href="https://forms.gle/TYnhvwzDPEku9rvn7" class="btn btn-primary" target="_blank" rel="noopener">سجّل الآن ←</a>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <p>لا يجب أن تبني المشروع المثالي.</p>
+    <p>لا يجب أن تعرف كل شيء قبل أن تبدأ.</p>
+    <p class="final">عليك فقط أن تبدأ.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="logo"><span class="logo-mark"></span> MMI</div>
+      <p>مبادرة مستقلة ومفتوحة الوصول تُعلّم الهندسة العملية لطلاب المنطقة، باللغتين العربية والإنجليزية، من المبادئ الأولى إلى معارض العلوم الدولية.</p>
+      <p style="margin-top:8px;"><a href="mailto:salmaraies14@gmail.com" style="color:var(--blue);" class="ltr">salmaraies14@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© 2026 THE MENA MAKER INITIATIVE</span>
+    <span>FOUNDED &amp; DIRECTED BY SALMA</span>
+  </div>
+</footer>
+
+</body>
+</html>
